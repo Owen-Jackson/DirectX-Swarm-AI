@@ -121,6 +121,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelClass.cpp" />
+    <ClCompile Include="Swarm.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
@@ -135,6 +136,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="ModelClass.h" />
     <ClInclude Include="ShapeIncludes.h" />
+    <ClInclude Include="Swarm.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Triangle.h" />
   </ItemGroup>

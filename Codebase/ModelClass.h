@@ -10,6 +10,11 @@
 
 using namespace DirectX;
 
+struct InstanceType	//passed into the shader
+{
+	XMMATRIX worldMat;
+};
+
 class ModelClass
 {
 protected:
@@ -17,11 +22,6 @@ protected:
 	{
 		XMFLOAT3 position;
 		XMFLOAT4 color;
-	};
-
-	struct InstanceType	//passed into the shader
-	{
-		XMMATRIX worldMat;
 	};
 
 	/*
@@ -42,21 +42,21 @@ public:
 	bool Initialise(ID3D11Device*, HWND);
 	void Shutdown();
 	void Render(ID3D11DeviceContext*, XMMATRIX, XMMATRIX, XMMATRIX);
-	void Tick(float);
+	virtual void Tick(float) {};
 
 	int GetIndexCount();
 	int GetVertexCount();
 	int GetInstanceCount();
+	XMFLOAT3 GetPosition();
+	InstanceType* GetInstances();
 
 	ColorShaderClass* GetColorShader();
 
-	void SetInstanceCount(int, int);
 	void AddInstances(int);
 	void RenderBuffers(ID3D11DeviceContext*);
-	void SetColor(XMFLOAT4);
-	
+	void SetColor(XMFLOAT4);	
 	void SetPosition(XMFLOAT3);
-	void SetTarget(XMFLOAT3);
+	void SetInstanceCount(int, int);
 	/*
 	void SetRotation(XMFLOAT3);
 	void SetMoveSpeed(float speed);
@@ -78,12 +78,12 @@ protected:
 	VertexType* m_vertices;
 	InstanceType* m_instances;
 	//InstanceData* m_agentData;
-	std::list<Agent*> m_agents;
+	//std::list<Agent*> m_agents;
 	unsigned long* m_indices;
 
-	//initial width and height for the swarm
-	int m_swarmWidth;
-	int m_swarmHeight;
+	//width and height of the grid to setup the instances in
+	int m_gridWidth;
+	int m_gridHeight;
 
 	int m_vertexCount;
 	int m_instanceCount;
@@ -94,8 +94,8 @@ protected:
 	XMFLOAT3 m_pos;
 	XMFLOAT4 m_color;
 
-	float m_moveSpeed;
-	XMFLOAT3 m_swarmTarget;
+	//float m_moveSpeed;
+	//XMFLOAT3 m_swarmTarget;
 
 	//used when using the mouse
 	int m_clientWidth;

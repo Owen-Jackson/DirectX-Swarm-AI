@@ -1,2 +1,16 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Swarm AI DirectX.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Swarm.cpp
+c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\swarm.cpp(38): warning C4101: 'moveVec': unreferenced local variable
+c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\swarm.cpp(39): warning C4101: 'movement': unreferenced local variable
+c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\swarm.cpp(37): warning C4101: 'transMat': unreferenced local variable
+c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\swarm.cpp(37): warning C4101: 'rotMat': unreferenced local variable
+c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\swarm.cpp(37): warning C4101: 'scaleMat': unreferenced local variable
+  Graphics.cpp
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\graphics.cpp(20): warning C4316: 'D3DClass': object allocated on the heap may not be aligned 16
+c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\graphics.cpp(35): warning C4316: 'Camera': object allocated on the heap may not be aligned 16
+c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\graphics.cpp(121): warning C4101: 'result': unreferenced local variable
+c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\graphics.cpp(156): warning C4101: 'result': unreferenced local variable
+c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\graphics.cpp(187): warning C4101: 'translateMatrix': unreferenced local variable
+  Generating Code...
   Codebase.vcxproj -> C:\Users\Owen\Desktop\Assignments Y3\Advanced Technologies\Block 2 - Swarm AI\DirectX-Swarm-AI\Debug\Codebase.exe

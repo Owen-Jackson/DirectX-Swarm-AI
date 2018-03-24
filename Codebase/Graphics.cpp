@@ -42,26 +42,38 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	m_Camera->SetPosition(XMFLOAT3(0.0f, 0.0f, -50.0f));
 
 	//add swarm(s)	
-	Triangle* testSwarm1 = new Triangle();
+	Swarm* testSwarm1 = new Swarm();
 	testSwarm1->SetInstanceCount(10, 10);
-	testSwarm1->SetColor(XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f));
-	m_models.push_back(testSwarm1);
+	testSwarm1->SetSwarmColor(XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f));
+	testSwarm1->SetSwarmPosition(XMFLOAT3(0, 0, 0));
+	m_swarms.push_back(testSwarm1);
 	
 	/*
 	Triangle* testSwarm2 = new Triangle();
 	testSwarm2->SetInstanceCount(300, 300);
 	testSwarm2->SetColor(XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f));
 	testSwarm2->SetPosition(XMFLOAT3(2.0f, 0.0f, 0.0f));
-	m_models.push_back(testSwarm2);
+	m_staticModels.push_back(testSwarm2);
 	*/
 
-	//initialise the models	
+	//add swarm models to the models list
+	for (std::list<Swarm*>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)
+	{
+		m_models.push_back((*swarm)->GetModel());
+	}
+
+	//initialise the static models	
 	for (std::list<ModelClass *>::iterator model = m_models.begin(); model != m_models.end(); model++)
 	{
 		(*model)->Initialise(m_D3D->GetDevice(), hWnd);
 		(*model)->RenderBuffers(m_D3D->GetDeviceContext());
 	}
 
+	//initialise swarms
+	for (std::list<Swarm*>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)
+	{
+		(*swarm)->InitialiseSwarm(m_D3D->GetDevice(), hWnd);
+	}
 	return true;
 }
 
@@ -73,6 +85,13 @@ void Graphics::Shutdown()
 		delete m_ColorShader;
 		m_ColorShader = nullptr;
 	}
+
+	for (std::list<Swarm *>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)
+	{
+		(*swarm)->Shutdown();
+		delete (*swarm);
+	}
+	m_swarms.clear();
 
 	for (std::list<ModelClass *>::iterator model = m_models.begin(); model != m_models.end(); model++)
 	{
@@ -103,23 +122,22 @@ bool Graphics::Tick(Input* input, float dt)
 	//generate the view matrix based on the camera's position
 	m_Camera->Tick(input, dt);
 
-	//if (GetKeyState(VK_LBUTTON) & 0x80)
-	//{
-		XMFLOAT3 target;
-		target = MouseToWorldCoords(input);
-		//tick all of the objects
-		for (std::list<ModelClass *>::iterator model = m_models.begin(); model != m_models.end(); model++)
-		{
-			(*model)->SetTarget(target);
-		}
-	//}
-
+	XMFLOAT3 target;
+	target = MouseToWorldCoords(input);
+	//tick all of the swarms
+	for (std::list<Swarm *>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)
+	{
+		(*swarm)->SetTarget(target);
+		(*swarm)->Tick(dt);
+	}
+	
 	//tick all of the objects
 	for (std::list<ModelClass *>::iterator model = m_models.begin(); model != m_models.end(); model++)
 	{
-		(*model)->Tick(dt);
+		//(*model)->Tick(dt);
 	}
 	
+
 	//render the scene
 	/*
 	result = Render(input);

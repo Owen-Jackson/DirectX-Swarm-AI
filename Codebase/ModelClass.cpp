@@ -7,9 +7,9 @@ ModelClass::ModelClass()
 	m_indexBuffer = nullptr;
 	m_ColorShader = nullptr;
 	m_color = XMFLOAT4(0.0f, 0.0f, 1.0f, 1.0f);
-	m_swarmWidth = 1;
-	m_swarmHeight = 1;
-	m_instanceCount = m_swarmWidth * m_swarmHeight;
+	//m_swarmWidth = 1;
+	//m_swarmHeight = 1;
+	//m_instanceCount = m_swarmWidth * m_swarmHeight;
 }
 
 ModelClass::~ModelClass()
@@ -80,44 +80,6 @@ void ModelClass::Render(ID3D11DeviceContext* deviceContext, XMMATRIX worldMatrix
 	return;
 }
 
-void ModelClass::Tick(float dt)
-{
-	XMMATRIX scaleMat, rotMat, transMat;
-	XMVECTOR moveVec;
-	XMFLOAT3 movement;
-	//for (int i = 0; i < m_instanceCount; i++)
-	int i = 0;
-	for(std::list<Agent*>::iterator agent = m_agents.begin(); agent != m_agents.end(); agent++)
-	{
-		(*agent)->Separate(m_agents);
-		m_instances[i].worldMat = (*agent)->Tick(m_swarmTarget, dt);
-		i++;
-		//m_instances[i].worldMat = m_agents[i].Tick(m_swarmTarget, dt);
-		/*
-		//need to un-transpose to make the matrix editable
-		m_instances[i].worldMat = XMMatrixTranspose(m_instances[i].worldMat);
-
-		//get the direction to move to
-		movement = XMFLOAT3(m_swarmTarget.x - m_agentData[i].pos.x, m_swarmTarget.y - m_agentData[i].pos.y, 0.0f);
-		moveVec = XMVector3Normalize(XMLoadFloat3(&movement));
-		XMStoreFloat3(&m_agentData[i].move_dir, moveVec);
-
-		//move the agent in their move direction
-		m_agentData[i].pos.x += m_agentData[i].move_dir.x * 0.1f;
-		m_agentData[i].pos.y += m_agentData[i].move_dir.y * 0.1f;
-
-		//rotate the agent around its local coords
-		//m_agentData[i].rot += 0.1f;
-		rotMat = XMMatrixRotationZ(m_agentData[i].rot);
-		transMat = XMMatrixTranslation(m_agentData[i].pos.x, m_agentData[i].pos.y, m_agentData[i].pos.z);
-
-		//combine the matrices to get the final world matrix
-		m_instances[i].worldMat = rotMat * transMat;
-		m_instances[i].worldMat = XMMatrixTranspose(m_instances[i].worldMat);
-		*/
-	}
-}
-
 int ModelClass::GetIndexCount()
 {
 	return m_indexCount;
@@ -139,11 +101,14 @@ ColorShaderClass* ModelClass::GetColorShader()
 	return m_ColorShader;
 }
 
-void ModelClass::SetInstanceCount(int swarmWidth, int swarmHeight)
+XMFLOAT3 ModelClass::GetPosition()
 {
-	m_swarmWidth = swarmWidth;
-	m_swarmHeight = swarmHeight;
-	m_instanceCount = swarmWidth * swarmHeight;
+	return m_pos;
+}
+
+InstanceType* ModelClass::GetInstances()
+{
+	return m_instances;
 }
 
 void ModelClass::AddInstances(int numInstances)
@@ -166,9 +131,12 @@ void ModelClass::SetPosition(XMFLOAT3 pos)
 {
 	m_pos = pos;
 }
-void ModelClass::SetTarget(XMFLOAT3 target)
+
+void ModelClass::SetInstanceCount(int width, int height)
 {
-	m_swarmTarget = target;
+	m_gridWidth = width;
+	m_gridHeight = height;
+	m_instanceCount = width * height;
 }
 
 /*
@@ -240,21 +208,17 @@ bool ModelClass::InitialiseBuffers(ID3D11Device* device)
 		}
 	}
 	*/
+
 	m_instances = new InstanceType[m_instanceCount];
-	//m_agentData = new InstanceData[m_instanceCount];
-	for (int i = 0; i < m_swarmHeight; i++)
+	for (int i = 0; i < m_gridHeight; i++)
 	{
-		for (int j = 0; j < m_swarmWidth; j++)
+		for (int j = 0; j < m_gridWidth; j++)
 		{
-			Agent* agent = new Agent();
-			agent->SetPosition(XMFLOAT3(-10.0f + j * 2 + m_pos.x, -10.0f + i * 2, 0.0f));
-			//m_agents[j + i*m_swarmHeight].SetPosition(XMFLOAT3(-10.0f + j * 2 + m_pos.x, -10.0f + i * 2, 0.0f));
-			m_instances[j + i*m_swarmHeight].worldMat = XMMatrixTranslation(-10.0f + j * 2 + m_pos.x, -10.0f + i * 2, 0.0f);
-			m_instances[j + i*m_swarmHeight].worldMat = XMMatrixTranspose(m_instances[j + i*m_swarmHeight].worldMat);
-			m_agents.push_back(agent);
+			m_instances[j + i*m_gridHeight].worldMat = XMMatrixTranslation(-10.0f + j * 2 + m_pos.x, -10.0f + i * 2, 0.0f);
+			m_instances[j + i*m_gridHeight].worldMat = XMMatrixTranspose(m_instances[j + i*m_gridHeight].worldMat);
 		}
 	}
-
+	
 	if (m_instanceCount > 0)
 	{
 		//setup the description for the instance buffer
