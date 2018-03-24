@@ -134,8 +134,8 @@ void ModelClass::SetPosition(XMFLOAT3 pos)
 
 void ModelClass::SetInstanceCount(int width, int height)
 {
-	m_gridWidth = width;
-	m_gridHeight = height;
+	m_spawnGridWidth = width;
+	m_spawnGridHeight = height;
 	m_instanceCount = width * height;
 }
 
@@ -210,12 +210,12 @@ bool ModelClass::InitialiseBuffers(ID3D11Device* device)
 	*/
 
 	m_instances = new InstanceType[m_instanceCount];
-	for (int i = 0; i < m_gridHeight; i++)
+	for (int i = 0; i < m_spawnGridHeight; i++)
 	{
-		for (int j = 0; j < m_gridWidth; j++)
+		for (int j = 0; j < m_spawnGridWidth; j++)
 		{
-			m_instances[j + i*m_gridHeight].worldMat = XMMatrixTranslation(-10.0f + j * 2 + m_pos.x, -10.0f + i * 2, 0.0f);
-			m_instances[j + i*m_gridHeight].worldMat = XMMatrixTranspose(m_instances[j + i*m_gridHeight].worldMat);
+			m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixScaling(m_scale, m_scale, m_scale) * XMMatrixTranslation(-10.0f + j * 2 + m_pos.x, -10.0f + i * 2, 0.0f);
+			m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixTranspose(m_instances[j + i*m_spawnGridHeight].worldMat);
 		}
 	}
 	
@@ -326,7 +326,7 @@ void ModelClass::RenderBuffers(ID3D11DeviceContext* deviceContext)
 		deviceContext->IASetVertexBuffers(0, 2, bufferPointers, strides, offsets);
 	}
 
-	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	deviceContext->IASetPrimitiveTopology(m_primitiveTopology);
 
 	return;
 }

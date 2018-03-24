@@ -82,8 +82,8 @@ protected:
 	unsigned long* m_indices;
 
 	//width and height of the grid to setup the instances in
-	int m_gridWidth;
-	int m_gridHeight;
+	int m_spawnGridWidth;
+	int m_spawnGridHeight;
 
 	int m_vertexCount;
 	int m_instanceCount;
@@ -93,13 +93,16 @@ protected:
 
 	XMFLOAT3 m_pos;
 	XMFLOAT4 m_color;
+	float m_scale = 1;
 
 	//float m_moveSpeed;
 	//XMFLOAT3 m_swarmTarget;
 
 	//used when using the mouse
 	int m_clientWidth;
-	int m_clientHeight;
+	int m_clientHeight;	
+
+	D3D11_PRIMITIVE_TOPOLOGY m_primitiveTopology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 };
 
 #endif // !_MODELCLASS_

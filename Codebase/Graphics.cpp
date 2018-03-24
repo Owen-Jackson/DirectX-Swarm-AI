@@ -43,10 +43,11 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 
 	//add swarm(s)	
 	Swarm* testSwarm1 = new Swarm();
-	testSwarm1->SetInstanceCount(10, 10);
+	testSwarm1->SetInstanceCount(50, 50);
 	testSwarm1->SetSwarmColor(XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f));
 	testSwarm1->SetSwarmPosition(XMFLOAT3(0, 0, 0));
 	m_swarms.push_back(testSwarm1);
+	
 	
 	/*
 	Triangle* testSwarm2 = new Triangle();
@@ -55,6 +56,12 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	testSwarm2->SetPosition(XMFLOAT3(2.0f, 0.0f, 0.0f));
 	m_staticModels.push_back(testSwarm2);
 	*/
+
+	//test grid	
+	Grid* testGrid = new Grid(50,50);
+	testGrid->SetPosition(XMFLOAT3(0, 0, 0));
+	m_models.push_back(testGrid);
+	
 
 	//add swarm models to the models list
 	for (std::list<Swarm*>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)

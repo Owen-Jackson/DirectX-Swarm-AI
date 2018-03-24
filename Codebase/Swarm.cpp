@@ -41,7 +41,7 @@ void Swarm::Tick(float dt)
 	int i = 0;
 	for (std::list<Agent*>::iterator agent = m_agents.begin(); agent != m_agents.end(); agent++)
 	{
-		(*agent)->Separate(m_agents);
+		//(*agent)->Separate(m_agents);
 		m_instances[i].worldMat = (*agent)->Tick(m_swarmTarget, dt);
 		i++;
 		//m_instances[i].worldMat = m_agents[i].Tick(m_swarmTarget, dt);

@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+      <FILENAME>modelclass.cpp</FILENAME>
+      <LINE>217</LINE>
+      <COLUMN>44</COLUMN>
+    </SFA>
+    <DEFECTCODE>6001</DEFECTCODE>
+    <DESCRIPTION>Using uninitialized memory '*m_instances'.</DESCRIPTION>
+    <FUNCTION>ModelClass::InitialiseBuffers</FUNCTION>
+    <DECORATED>?InitialiseBuffers@ModelClass@@IAE_NPAUID3D11Device@@@Z</DECORATED>
+    <FUNCLINE>159</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>161</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>162</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>163</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>164</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>165</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>36</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>47</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>61</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>73</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>167</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>170</LINE>
+        <COLUMN>12</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>173</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>176</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>179</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>180</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>181</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>182</LINE>
+        <COLUMN>33</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>183</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>184</LINE>
+        <COLUMN>38</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>186</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>187</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>188</LINE>
+        <COLUMN>29</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>191</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>192</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>212</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'*m_instances' is not initialized</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>213</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>213</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'i&lt;m_gridHeight')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>215</LINE>
+        <COLUMN>11</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>215</LINE>
+        <COLUMN>20</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'j&lt;m_gridWidth')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>217</LINE>
+        <COLUMN>44</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'*m_instances' is used, but may not have been initialized</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+      <FILENAME>modelclass.cpp</FILENAME>
+      <LINE>217</LINE>
+      <COLUMN>44</COLUMN>
+    </SFA>
+    <DEFECTCODE>6385</DEFECTCODE>
+    <DESCRIPTION>Reading invalid data from 'm_instances':  the readable size is 'm_instanceCount*64' bytes, but '192' bytes may be read.</DESCRIPTION>
+    <FUNCTION>ModelClass::InitialiseBuffers</FUNCTION>
+    <DECORATED>?InitialiseBuffers@ModelClass@@IAE_NPAUID3D11Device@@@Z</DECORATED>
+    <FUNCLINE>159</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>161</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>162</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>163</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>164</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>165</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>36</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>47</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>61</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>73</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>167</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>170</LINE>
+        <COLUMN>12</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>173</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>176</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>179</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>180</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>181</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>182</LINE>
+        <COLUMN>33</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>183</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>184</LINE>
+        <COLUMN>38</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>186</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>187</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>188</LINE>
+        <COLUMN>29</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>191</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>192</LINE>
+        <COLUMN>5</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume 'FAILED(result)' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>212</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>213</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>213</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'i&lt;m_gridHeight')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>215</LINE>
+        <COLUMN>11</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>215</LINE>
+        <COLUMN>20</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'j&lt;m_gridWidth')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>217</LINE>
+        <COLUMN>44</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>218</LINE>
+        <COLUMN>44</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>215</LINE>
+        <COLUMN>36</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>215</LINE>
+        <COLUMN>20</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Exit this loop, ('j&lt;m_gridWidth' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>213</LINE>
+        <COLUMN>36</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>213</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Continue this loop, (assume 'i&lt;m_gridHeight')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>215</LINE>
+        <COLUMN>11</COLUMN>
+        <KEYEVENT>
+          <ID>6</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'j' is NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>215</LINE>
+        <COLUMN>20</COLUMN>
+        <KEYEVENT>
+          <ID>7</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'j&lt;m_gridWidth')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>217</LINE>
+        <COLUMN>44</COLUMN>
+        <KEYEVENT>
+          <ID>8</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'j' is an Output from 'DirectX::XMMATRIX::=' (declared at c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\directxmath.h:484)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>217</LINE>
+        <COLUMN>44</COLUMN>
+        <KEYEVENT>
+          <ID>9</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>Invalid read from 'm_instances[2]', (readable range is 0 to 0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+      <FILENAME>modelclass.cpp</FILENAME>
+      <LINE>217</LINE>
+      <COLUMN>44</COLUMN>
+    </SFA>
+    <DEFECTCODE>6001</DEFECTCODE>
+    <DESCRIPTION>Using uninitialized memory '*m_instances'.</DESCRIPTION>
+    <FUNCTION>ModelClass::InitialiseBuffers</FUNCTION>
+    <DECORATED>?InitialiseBuffers@ModelClass@@IAE_NPAUID3D11Device@@@Z</DECORATED>
+    <FUNCLINE>159</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>161</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>162</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>163</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>164</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>165</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>36</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>47</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>61</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>166</LINE>
+        <COLUMN>73</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>167</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>170</LINE>
+        <COLUMN>12</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>173</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>176</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>179</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>180</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>181</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>182</LINE>
+        <COLUMN>33</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>183</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>184</LINE>
+        <COLUMN>38</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>186</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>187</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>188</LINE>
+        <COLUMN>29</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>191</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>192</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>212</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'*m_instances' is not initialized</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>213</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>213</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'i&lt;m_gridHeight')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>215</LINE>
+        <COLUMN>11</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>215</LINE>
+        <COLUMN>20</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'j&lt;m_gridWidth')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\owen\desktop\assignments y3\advanced technologies\block 2 - swarm ai\directx-swarm-ai\codebase\</FILEPATH>
+        <FILENAME>modelclass.cpp</FILENAME>
+        <LINE>217</LINE>
+        <COLUMN>44</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'*m_instances' is used, but may not have been initialized</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

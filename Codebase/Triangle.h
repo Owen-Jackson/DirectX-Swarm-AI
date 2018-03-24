@@ -7,8 +7,8 @@ public:
 	Triangle();
 	~Triangle();
 protected:
-	void SetupVertices();
-	void SetupIndices();
-	void SetupCounts();
+	void SetupVertices() override;
+	void SetupIndices() override;
+	void SetupCounts() override;
 
 };
