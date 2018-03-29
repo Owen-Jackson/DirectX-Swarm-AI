@@ -4,9 +4,7 @@
 
 #include <d3d11.h>
 #include <DirectXMath.h>
-#include <list>
 #include "ColorShaderClass.h"
-#include "Agent.h"
 
 using namespace DirectX;
 
@@ -57,6 +55,7 @@ public:
 	void SetColor(XMFLOAT4);	
 	void SetPosition(XMFLOAT3);
 	void SetInstanceCount(int, int);
+	void SetScale(float);
 	/*
 	void SetRotation(XMFLOAT3);
 	void SetMoveSpeed(float speed);

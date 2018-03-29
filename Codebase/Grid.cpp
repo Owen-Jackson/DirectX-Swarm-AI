@@ -2,23 +2,13 @@
 
 Grid::Grid()
 {
-	m_vertexBuffer = nullptr;
-	m_indexBuffer = nullptr;
-	SetInstanceCount(1, 1);	//the grid only needs one instance
-	m_color = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	m_primitiveTopology = D3D11_PRIMITIVE_TOPOLOGY_LINELIST;
-	m_scale = 5;
 }
 
 Grid::Grid(int width, int height)
 {
-	m_vertexBuffer = nullptr;
-	m_indexBuffer = nullptr;
-	m_color = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
-	SetInstanceCount(1, 1);	//the grid only needs one instance
 	SetGridSize(width, height);
 	m_primitiveTopology = D3D11_PRIMITIVE_TOPOLOGY_LINELIST;
-	m_scale = 5;
 }
 
 Grid::~Grid()
@@ -57,9 +47,9 @@ void Grid::SetupVertices()
 
 	int index = 0;
 	float posX, posY;
-	for (int i = 0; i < (m_gridHeight - 1); i++)
+	for (int i = 0; i < m_gridHeight; i++)
 	{
-		for (int j = 0; j < (m_gridWidth - 1); j++)
+		for (int j = 0; j < m_gridWidth; j++)
 		{
 			//top left
 			posX = (float)(j);
@@ -134,6 +124,6 @@ void Grid::SetupIndices()
 void Grid::SetupCounts()
 {
 	//calculate the number of vertices in the grid
-	m_vertexCount = (m_gridWidth - 1) * (m_gridHeight - 1) * 8;
+	m_vertexCount = m_gridWidth * m_gridHeight * 8;
 	m_indexCount = m_vertexCount;
 }

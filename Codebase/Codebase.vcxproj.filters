@@ -78,6 +78,9 @@
     <ClCompile Include="Swarm.cpp">
       <Filter>Source Files\AI</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionGrid.cpp">
+      <Filter>Source Files\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System.h">
@@ -117,6 +120,12 @@
       <Filter>Header Files\Shapes&amp;Models</Filter>
     </ClInclude>
     <ClInclude Include="Swarm.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionGrid.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="GridCell.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
   </ItemGroup>

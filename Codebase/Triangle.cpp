@@ -1,7 +1,8 @@
 #include "Triangle.h"
 
-Triangle::Triangle() : ModelClass()
+Triangle::Triangle()
 {
+	m_primitiveTopology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 }
 
 Triangle::~Triangle()

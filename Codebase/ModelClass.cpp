@@ -7,9 +7,7 @@ ModelClass::ModelClass()
 	m_indexBuffer = nullptr;
 	m_ColorShader = nullptr;
 	m_color = XMFLOAT4(0.0f, 0.0f, 1.0f, 1.0f);
-	//m_swarmWidth = 1;
-	//m_swarmHeight = 1;
-	//m_instanceCount = m_swarmWidth * m_swarmHeight;
+	SetInstanceCount(1, 1);	//default to 1 model
 }
 
 ModelClass::~ModelClass()
@@ -139,6 +137,11 @@ void ModelClass::SetInstanceCount(int width, int height)
 	m_instanceCount = width * height;
 }
 
+void ModelClass::SetScale(float scale)
+{
+	m_scale = scale;
+}
+
 /*
 void ModelClass::SetRotation(XMFLOAT3 newRot)
 {
@@ -214,7 +217,7 @@ bool ModelClass::InitialiseBuffers(ID3D11Device* device)
 	{
 		for (int j = 0; j < m_spawnGridWidth; j++)
 		{
-			m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixScaling(m_scale, m_scale, m_scale) * XMMatrixTranslation(-10.0f + j * 2 + m_pos.x, -10.0f + i * 2, 0.0f);
+			m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixScaling(m_scale, m_scale, m_scale) * XMMatrixTranslation(j * 2 + m_pos.x, i * 2, 0.0f);
 			m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixTranspose(m_instances[j + i*m_spawnGridHeight].worldMat);
 		}
 	}

@@ -41,27 +41,24 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	//set the initial position of the camera
 	m_Camera->SetPosition(XMFLOAT3(0.0f, 0.0f, -50.0f));
 
-	//add swarm(s)	
+	//add swarm(s)		
 	Swarm* testSwarm1 = new Swarm();
 	testSwarm1->SetInstanceCount(50, 50);
 	testSwarm1->SetSwarmColor(XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f));
 	testSwarm1->SetSwarmPosition(XMFLOAT3(0, 0, 0));
-	m_swarms.push_back(testSwarm1);
-	
-	
-	/*
-	Triangle* testSwarm2 = new Triangle();
-	testSwarm2->SetInstanceCount(300, 300);
-	testSwarm2->SetColor(XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f));
-	testSwarm2->SetPosition(XMFLOAT3(2.0f, 0.0f, 0.0f));
-	m_staticModels.push_back(testSwarm2);
-	*/
+	m_swarms.push_back(testSwarm1);	
 
 	//test grid	
-	Grid* testGrid = new Grid(50,50);
-	testGrid->SetPosition(XMFLOAT3(0, 0, 0));
-	m_models.push_back(testGrid);
-	
+	//Grid* testGrid = new Grid(50,50);
+	//testGrid->SetColor(XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f));
+	//testGrid->SetPosition(XMFLOAT3(0, 0, 0));
+	//testGrid->SetScale(5);
+	//m_models.push_back(testGrid);	
+
+	//collision test grid
+	CollisionGrid* collisionGrid = new CollisionGrid(10, 10, 20);
+	collisionGrid->SetColor(XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f));
+	m_models.push_back(collisionGrid);
 
 	//add swarm models to the models list
 	for (std::list<Swarm*>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)
@@ -80,6 +77,9 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	for (std::list<Swarm*>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)
 	{
 		(*swarm)->InitialiseSwarm(m_D3D->GetDevice(), hWnd);
+
+		//add the initialsed swarm's agents to the collision grid
+		collisionGrid->AddSwarm((*swarm)->GetSwarm());
 	}
 	return true;
 }
@@ -141,7 +141,7 @@ bool Graphics::Tick(Input* input, float dt)
 	//tick all of the objects
 	for (std::list<ModelClass *>::iterator model = m_models.begin(); model != m_models.end(); model++)
 	{
-		//(*model)->Tick(dt);
+		(*model)->Tick(dt);
 	}
 	
 

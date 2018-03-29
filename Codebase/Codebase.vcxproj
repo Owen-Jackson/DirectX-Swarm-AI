@@ -114,6 +114,7 @@
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CollisionGrid.cpp" />
     <ClCompile Include="ColorShaderClass.cpp" />
     <ClCompile Include="D3DClass.cpp" />
     <ClCompile Include="Graphics.cpp" />
@@ -128,11 +129,13 @@
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CollisionGrid.h" />
     <ClInclude Include="ColorShaderClass.h" />
     <ClInclude Include="D3DClass.h" />
     <ClInclude Include="FontClass.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="GridCell.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="ModelClass.h" />
     <ClInclude Include="ShapeIncludes.h" />

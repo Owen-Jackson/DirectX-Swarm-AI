@@ -9,6 +9,7 @@
 #include "ShapeIncludes.h"
 #include "ColorShaderClass.h"
 #include "Swarm.h"
+#include "CollisionGrid.h"
 
 //globals
 const int SCREEN_WIDTH = 800;
