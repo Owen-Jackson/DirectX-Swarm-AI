@@ -50,7 +50,7 @@ XMMATRIX Agent::SetupWorldMatrix()
 }
 
 //used to separate the agents, hopefully avoiding collisions
-void Agent::Separate(std::vector<Agent*> agentList)
+void Agent::Separate(std::vector<Agent*>& agentList)
 {
 	float desiredSeparation = 5;
 	int count = 0;
@@ -88,6 +88,16 @@ void Agent::Separate(std::vector<Agent*> agentList)
 	}
 }
 
+void Agent::Separate(XMVECTOR& sum, int& count)
+{
+	sum /= count;
+	sum *= m_maxSpeed;
+	XMFLOAT3 steer;
+	XMStoreFloat3(&steer, XMVectorSubtract(sum, XMLoadFloat3(&m_vel)));
+	m_acc.x += steer.x;
+	m_acc.y += steer.y;
+}
+
 void Agent::SetPosition(XMFLOAT3 pos)
 {
 	m_pos = pos;
@@ -118,14 +128,19 @@ bool Agent::IsAlive()
 	return m_alive;
 }
 
-XMFLOAT3 Agent::GetPosition()
+XMFLOAT3& Agent::GetPosition()
 {
 	return m_pos;
 }
 
-XMFLOAT3 Agent::GetVelocity()
+XMFLOAT3& Agent::GetVelocity()
 {
 	return m_vel;
+}
+
+XMFLOAT3& Agent::GetAcceleration()
+{
+	return m_acc;
 }
 
 GridCell* Agent::GetGridCell()
@@ -133,9 +148,14 @@ GridCell* Agent::GetGridCell()
 	return m_currentGridCell;
 }
 
-int Agent::GetGridCellVectorIndex()
+int& Agent::GetGridCellVectorIndex()
 {
 	return m_cellVectorIndex;
+}
+
+float& Agent::GetScale()
+{
+	return m_scale;
 }
 
 void Agent::Steer(XMFLOAT3 target)

@@ -4,8 +4,6 @@
 
 #include "ModelClass.h"
 
-using namespace DirectX;
-
 class Grid : public ModelClass
 {
 public:

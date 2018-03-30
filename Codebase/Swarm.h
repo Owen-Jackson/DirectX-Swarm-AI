@@ -18,8 +18,8 @@ public:
 	void Tick(float);
 
 	Triangle* GetModel();
-	std::vector<Agent*> GetSwarm();
-	XMFLOAT3 GetTarget();
+	std::vector<Agent*>& GetSwarm();
+	XMFLOAT3& GetTarget();
 
 	void SetInstanceCount(int, int);
 	void SetTarget(XMFLOAT3);

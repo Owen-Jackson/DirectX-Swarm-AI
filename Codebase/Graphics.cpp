@@ -4,7 +4,6 @@ Graphics::Graphics()
 {
 	m_D3D = nullptr;
 	m_Camera = nullptr;
-	//m_Model = nullptr;
 	m_ColorShader = nullptr;
 }
 
@@ -38,15 +37,12 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 		return false;
 	}
 
-	//set the initial position of the camera
-	m_Camera->SetPosition(XMFLOAT3(0.0f, 0.0f, -50.0f));
-
 	//add swarm(s)		
 	Swarm* testSwarm1 = new Swarm();
-	testSwarm1->SetInstanceCount(50, 50);
+	testSwarm1->SetInstanceCount(200, 200);
 	testSwarm1->SetSwarmColor(XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f));
 	testSwarm1->SetSwarmPosition(XMFLOAT3(0, 0, 0));
-	m_swarms.push_back(testSwarm1);	
+	m_swarms.push_back(testSwarm1);
 
 	//test grid	
 	//Grid* testGrid = new Grid(50,50);
@@ -56,9 +52,16 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	//m_models.push_back(testGrid);	
 
 	//collision test grid
-	CollisionGrid* collisionGrid = new CollisionGrid(10, 10, 20);
+	CollisionGrid* collisionGrid = new CollisionGrid(100, 100, 5);
 	collisionGrid->SetColor(XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f));
 	m_models.push_back(collisionGrid);
+
+	//set the initial position of the camera
+	XMFLOAT3 cameraStart;
+	cameraStart.x = collisionGrid->GetMaxX() / 2;
+	cameraStart.y = collisionGrid->GetMaxY() / 2;
+	cameraStart.z = -50.0f;
+	m_Camera->SetPosition(cameraStart);
 
 	//add swarm models to the models list
 	for (std::list<Swarm*>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)

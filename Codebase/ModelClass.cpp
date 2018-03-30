@@ -78,20 +78,24 @@ void ModelClass::Render(ID3D11DeviceContext* deviceContext, XMMATRIX worldMatrix
 	return;
 }
 
-int ModelClass::GetIndexCount()
+int& ModelClass::GetIndexCount()
 {
 	return m_indexCount;
 }
 
-
-int ModelClass::GetVertexCount()
+int& ModelClass::GetVertexCount()
 {
 	return m_vertexCount;
 }
 
-int ModelClass::GetInstanceCount()
+int& ModelClass::GetInstanceCount()
 {
 	return m_instanceCount;
+}
+
+float& ModelClass::GetScale()
+{
+	return m_scale;
 }
 
 ColorShaderClass* ModelClass::GetColorShader()
@@ -99,7 +103,7 @@ ColorShaderClass* ModelClass::GetColorShader()
 	return m_ColorShader;
 }
 
-XMFLOAT3 ModelClass::GetPosition()
+XMFLOAT3& ModelClass::GetPosition()
 {
 	return m_pos;
 }

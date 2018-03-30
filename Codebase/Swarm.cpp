@@ -73,12 +73,12 @@ Triangle* Swarm::GetModel()
 	return m_model;
 }
 
-std::vector<Agent*> Swarm::GetSwarm()
+std::vector<Agent*>& Swarm::GetSwarm()
 {
 	return m_agents;
 }
 
-XMFLOAT3 Swarm::GetTarget()
+XMFLOAT3& Swarm::GetTarget()
 {
 	return m_swarmTarget;
 }

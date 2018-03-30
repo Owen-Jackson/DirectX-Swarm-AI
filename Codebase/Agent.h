@@ -7,8 +7,6 @@
 #include <vector>
 #include "CollisionGrid.h"
 
-using namespace DirectX;
-
 class Swarm;
 
 class Agent
@@ -18,7 +16,8 @@ public:
 	~Agent();
 	void Tick(float);
 	XMMATRIX SetupWorldMatrix();
-	void Separate(std::vector<Agent*>);
+	void Separate(std::vector<Agent*>&);
+	void Separate(XMVECTOR&, int&);
 	void SetPosition(XMFLOAT3);
 	void SetRotation(float);
 	void SetScale(float);
@@ -27,10 +26,12 @@ public:
 
 	bool IsAlive();
 
-	XMFLOAT3 GetPosition();
-	XMFLOAT3 GetVelocity();
+	XMFLOAT3& GetPosition();
+	XMFLOAT3& GetVelocity();
+	XMFLOAT3& GetAcceleration();
 	GridCell* GetGridCell();
-	int GetGridCellVectorIndex();
+	int& GetGridCellVectorIndex();
+	float& GetScale();
 
 private:
 	virtual void Steer(XMFLOAT3);	//override for different steering behaviours

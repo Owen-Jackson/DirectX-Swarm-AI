@@ -6,8 +6,6 @@
 #include <DirectXMath.h>
 #include "ColorShaderClass.h"
 
-using namespace DirectX;
-
 struct InstanceType	//passed into the shader
 {
 	XMMATRIX worldMat;
@@ -42,13 +40,13 @@ public:
 	void Render(ID3D11DeviceContext*, XMMATRIX, XMMATRIX, XMMATRIX);
 	virtual void Tick(float) {};
 
-	int GetIndexCount();
-	int GetVertexCount();
-	int GetInstanceCount();
-	XMFLOAT3 GetPosition();
-	InstanceType* GetInstances();
-
+	int& GetIndexCount();
+	int& GetVertexCount();
+	int& GetInstanceCount();
+	float& GetScale();
+	XMFLOAT3& GetPosition();
 	ColorShaderClass* GetColorShader();
+	InstanceType* GetInstances();
 
 	void AddInstances(int);
 	void RenderBuffers(ID3D11DeviceContext*);
