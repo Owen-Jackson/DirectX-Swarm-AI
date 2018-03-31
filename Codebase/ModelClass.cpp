@@ -1,5 +1,7 @@
 #include "ModelClass.h"
 
+using namespace DirectX;
+
 ModelClass::ModelClass()
 {
 	m_vertexBuffer = nullptr;
@@ -118,10 +120,8 @@ void ModelClass::AddInstances(int numInstances)
 	InstanceType* instance;
 	for (int i = 0; i < numInstances; i++)
 	{
-		instance = new InstanceType();
-		//m_instances.push_back(instance);
+		instance = (struct InstanceType*)_mm_malloc(sizeof(struct InstanceType), 16);
 	}
-
 }
 
 void ModelClass::SetColor(XMFLOAT4 color)
@@ -146,31 +146,11 @@ void ModelClass::SetScale(float scale)
 	m_scale = scale;
 }
 
-/*
-void ModelClass::SetRotation(XMFLOAT3 newRot)
-{
-	m_rot = newRot;
-}
-
-void ModelClass::SetMoveSpeed(float speed) 
-{
-	m_moveSpeed = speed; 
-}
-
-void ModelClass::SetMoveDirection(XMFLOAT3 dir) 
-{ 
-	m_moveDir = dir;
-}
-*/
-
 bool ModelClass::InitialiseBuffers(ID3D11Device* device)
 {
 	D3D11_BUFFER_DESC vertexBufferDesc;
-	D3D11_BUFFER_DESC indexBufferDesc;
 	D3D11_BUFFER_DESC instanceBufferDesc;
-	D3D11_BUFFER_DESC matrixBufferDesc;
-	D3D11_BUFFER_DESC sceneBufferDesc;
-	D3D11_SUBRESOURCE_DATA vertexData, indexData, instanceData, matrixData, sceneData;
+	D3D11_SUBRESOURCE_DATA vertexData, instanceData;
 	HRESULT result;
 
 	//create arrays to store the vertex and index data
@@ -216,12 +196,12 @@ bool ModelClass::InitialiseBuffers(ID3D11Device* device)
 	}
 	*/
 
-	m_instances = new InstanceType[m_instanceCount];
+	m_instances = (struct InstanceType*)_mm_malloc(sizeof(struct InstanceType) * m_instanceCount, 16);
 	for (int i = 0; i < m_spawnGridHeight; i++)
 	{
 		for (int j = 0; j < m_spawnGridWidth; j++)
 		{
-			m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixScaling(m_scale, m_scale, m_scale) * XMMatrixTranslation(j * 2 + m_pos.x, i * 2, 0.0f);
+			m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixScaling(m_scale, m_scale, m_scale) * XMMatrixTranslation(j * m_scale + m_pos.x, i * m_scale + m_pos.y, 0.0f);
 			m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixTranspose(m_instances[j + i*m_spawnGridHeight].worldMat);
 		}
 	}

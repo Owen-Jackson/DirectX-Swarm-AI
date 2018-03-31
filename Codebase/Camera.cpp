@@ -1,5 +1,7 @@
 #include "Camera.h"
 
+using namespace DirectX;
+
 Camera::Camera()
 {
 	m_position = { 0.0f,0.0f,0.0f };

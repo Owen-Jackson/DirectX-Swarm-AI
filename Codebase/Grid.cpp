@@ -1,5 +1,7 @@
 #include "Grid.h"
 
+using namespace DirectX;
+
 Grid::Grid()
 {
 	m_primitiveTopology = D3D11_PRIMITIVE_TOPOLOGY_LINELIST;

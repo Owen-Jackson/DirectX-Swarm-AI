@@ -34,7 +34,6 @@ void ColorShaderClass::Shutdown()
 
 bool ColorShaderClass::Render(ID3D11DeviceContext* deviceContext, int vertexCount, int instanceCount)
 {
-	bool result;
 
 	//set shader parameters to use for rendering
 	/*
@@ -217,7 +216,7 @@ void ColorShaderClass::ShutdownShader()
 	return;
 }
 
-bool ColorShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, XMMATRIX worldMatrix, XMMATRIX viewMatrix, XMMATRIX projectionMatrix)
+bool ColorShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, DirectX::XMMATRIX worldMatrix, DirectX::XMMATRIX viewMatrix, DirectX::XMMATRIX projectionMatrix)
 {
 	HRESULT result;
 	D3D11_MAPPED_SUBRESOURCE mappedResource;

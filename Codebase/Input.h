@@ -8,8 +8,6 @@
 #include <dinput.h>
 #include <DirectXMath.h>
 
-using namespace DirectX;
-
 class Input
 {
 public:
@@ -23,7 +21,7 @@ public:
 	bool IsKeyPressed(const int);
 	bool IsEscapePressed();
 	bool IsMouseLeftClicked();
-	XMFLOAT2 GetMouseLocation();
+	DirectX::XMFLOAT2 GetMouseLocation();
 	float GetMouseWheel();
 
 private:

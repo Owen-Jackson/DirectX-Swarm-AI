@@ -4,28 +4,33 @@
 
 #include "Triangle.h"
 #include "CollisionGrid.h"
+#include "SwarmTypes.h"
+
+class Agent;
 
 //this class will move a swarm of models
 class Swarm
 {
 public:
 	Swarm();
-	~Swarm();
-	
-	void InitialiseSwarm(ID3D11Device*, HWND);	//initialise without collision grid
-	void InitialiseSwarm(ID3D11Device*, HWND, CollisionGrid*);	//initialise with collision grid
+	virtual ~Swarm();
+
+	virtual void InitialiseSwarm(ID3D11Device*, HWND);	//initialise without collision grid
+	virtual void InitialiseSwarm(ID3D11Device*, HWND, CollisionGrid*);	//initialise with collision grid
 	void Shutdown();
 	void Tick(float);
 
 	Triangle* GetModel();
 	std::vector<Agent*>& GetSwarm();
-	XMFLOAT3& GetTarget();
+	DirectX::XMFLOAT3& GetTarget();
+	SwarmType& GetSwarmType();
 
 	void SetInstanceCount(int, int);
-	void SetTarget(XMFLOAT3);
-	void SetSwarmColor(XMFLOAT4);
-	void SetSwarmPosition(XMFLOAT3);
+	void SetTarget(DirectX::XMFLOAT3);
+	void SetSwarmColor(DirectX::XMFLOAT4);
+	void SetSwarmPosition(DirectX::XMFLOAT3);
 	void SetScale(float);
+	void SetSwarmType(const SwarmType);
 
 protected:
 	Triangle* m_model;
@@ -39,8 +44,9 @@ protected:
 	int m_swarmHeight;
 	float m_agentScale = 1.0f;
 
-	XMFLOAT3 m_pos;
-	XMFLOAT3 m_swarmTarget;
+	DirectX::XMFLOAT3 m_pos;
+	DirectX::XMFLOAT3 m_swarmTarget;
+	SwarmType m_swarmType;
 };
 
 #endif // !_SWARMCLASS_

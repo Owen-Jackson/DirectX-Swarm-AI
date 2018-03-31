@@ -92,6 +92,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -117,11 +118,13 @@
     <ClCompile Include="CollisionGrid.cpp" />
     <ClCompile Include="ColorShaderClass.cpp" />
     <ClCompile Include="D3DClass.cpp" />
+    <ClCompile Include="Fish.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelClass.cpp" />
+    <ClCompile Include="Shoal.cpp" />
     <ClCompile Include="Swarm.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Triangle.cpp" />
@@ -132,6 +135,7 @@
     <ClInclude Include="CollisionGrid.h" />
     <ClInclude Include="ColorShaderClass.h" />
     <ClInclude Include="D3DClass.h" />
+    <ClInclude Include="Fish.h" />
     <ClInclude Include="FontClass.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Grid.h" />
@@ -139,7 +143,9 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="ModelClass.h" />
     <ClInclude Include="ShapeIncludes.h" />
+    <ClInclude Include="Shoal.h" />
     <ClInclude Include="Swarm.h" />
+    <ClInclude Include="SwarmTypes.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Triangle.h" />
   </ItemGroup>

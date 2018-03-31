@@ -1,5 +1,7 @@
 #include "D3DClass.h"
 
+using namespace DirectX;
+
 D3DClass::D3DClass()
 {
 	m_swapChain = nullptr;

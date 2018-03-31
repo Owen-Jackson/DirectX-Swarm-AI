@@ -1,5 +1,7 @@
 #include "Graphics.h"
 
+using namespace DirectX;
+
 Graphics::Graphics()
 {
 	m_D3D = nullptr;
@@ -37,31 +39,64 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 		return false;
 	}
 
-	//add swarm(s)		
-	Swarm* testSwarm1 = new Swarm();
-	testSwarm1->SetInstanceCount(200, 200);
-	testSwarm1->SetSwarmColor(XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f));
-	testSwarm1->SetSwarmPosition(XMFLOAT3(0, 0, 0));
-	m_swarms.push_back(testSwarm1);
-
-	//test grid	
-	//Grid* testGrid = new Grid(50,50);
-	//testGrid->SetColor(XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f));
-	//testGrid->SetPosition(XMFLOAT3(0, 0, 0));
-	//testGrid->SetScale(5);
-	//m_models.push_back(testGrid);	
-
 	//collision test grid
 	CollisionGrid* collisionGrid = new CollisionGrid(100, 100, 5);
-	collisionGrid->SetColor(XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f));
+	collisionGrid->SetColor(XMFLOAT4(1.0f, 1.0f, 1.0f, 0.5f));
 	m_models.push_back(collisionGrid);
 
 	//set the initial position of the camera
-	XMFLOAT3 cameraStart;
-	cameraStart.x = collisionGrid->GetMaxX() / 2;
-	cameraStart.y = collisionGrid->GetMaxY() / 2;
-	cameraStart.z = -50.0f;
-	m_Camera->SetPosition(cameraStart);
+	XMFLOAT3 gridCentre;
+	gridCentre.x = collisionGrid->GetMaxX() / 2;
+	gridCentre.y = collisionGrid->GetMaxY() / 2;
+	gridCentre.z = 0;
+	m_Camera->SetPosition(XMFLOAT3(gridCentre.x, gridCentre.y, -50.0f));
+
+	//add swarm(s)		
+	Shoal* greenShoal = new Shoal();
+	greenShoal->SetInstanceCount(50, 50);
+	greenShoal->SetSwarmColor(XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f));
+	greenShoal->SetSwarmPosition(XMFLOAT3(gridCentre.x + (gridCentre.x / 2), gridCentre.y + (gridCentre.y / 2), 0));
+	greenShoal->SetSwarmType(SwarmType::PREY);
+	greenShoal->SetTarget(XMFLOAT3(gridCentre.x + (gridCentre.x / 2), gridCentre.y + (gridCentre.y / 2), 0));
+	greenShoal->SetIsRotatingClockwise(false);
+	m_swarms.push_back(greenShoal);
+
+	//add swarm(s)		
+	Shoal* cyanShoal = new Shoal();
+	cyanShoal->SetInstanceCount(50, 50);
+	cyanShoal->SetSwarmColor(XMFLOAT4(0.0f, 1.0f, 1.0f, 1.0f));
+	cyanShoal->SetSwarmPosition(XMFLOAT3(gridCentre.x - (gridCentre.x / 2), gridCentre.y - (gridCentre.x / 2), 0));
+	cyanShoal->SetSwarmType(SwarmType::PREY);
+	cyanShoal->SetTarget(XMFLOAT3(gridCentre.x - (gridCentre.x / 2), gridCentre.y - (gridCentre.x / 2), 0));
+	m_swarms.push_back(cyanShoal);
+
+	//add swarm(s)		
+	Shoal* purpleShoal = new Shoal();
+	purpleShoal->SetInstanceCount(33, 33);
+	purpleShoal->SetSwarmColor(XMFLOAT4(0.5f, 0.5f, 1.0f, 1.0f));
+	purpleShoal->SetSwarmPosition(XMFLOAT3(gridCentre.x - (gridCentre.x / 2), gridCentre.y + (gridCentre.x / 2), 0));
+	purpleShoal->SetSwarmType(SwarmType::PREY);
+	purpleShoal->SetTarget(XMFLOAT3(gridCentre.x - (gridCentre.x / 2), gridCentre.y + (gridCentre.x / 2), 0));
+	purpleShoal->SetIsRotatingClockwise(false);
+	m_swarms.push_back(purpleShoal);
+
+	//add swarm(s)		
+	Shoal* orangeShoal = new Shoal();
+	orangeShoal->SetInstanceCount(100, 100);
+	orangeShoal->SetSwarmColor(XMFLOAT4(1.0f, 0.5f, 0.0f, 1.0f));
+	orangeShoal->SetSwarmPosition(XMFLOAT3(gridCentre.x + (gridCentre.x / 2), gridCentre.y - (gridCentre.x / 2), 0));
+	orangeShoal->SetSwarmType(SwarmType::PREY);
+	orangeShoal->SetTarget(XMFLOAT3(gridCentre.x + (gridCentre.x / 2), gridCentre.y - (gridCentre.x / 2), 0));
+	m_swarms.push_back(orangeShoal);
+	
+	Swarm* sharks = new Swarm();
+	sharks->SetInstanceCount(3, 3);
+	sharks->SetSwarmColor(XMFLOAT4(1.0f, 0.0f, 0.0f, 0.0f));
+	sharks->SetSwarmPosition(gridCentre);
+	sharks->SetSwarmType(SwarmType::PREDATOR);
+	sharks->SetScale(2.0f);
+	m_swarms.push_back(sharks);
+	
 
 	//add swarm models to the models list
 	for (std::list<Swarm*>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)
@@ -79,7 +114,7 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	//initialise swarms
 	for (std::list<Swarm*>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)
 	{
-		(*swarm)->InitialiseSwarm(m_D3D->GetDevice(), hWnd);
+		(*swarm)->InitialiseSwarm(m_D3D->GetDevice(), hWnd, collisionGrid);
 
 		//add the initialsed swarm's agents to the collision grid
 		collisionGrid->AddSwarm((*swarm)->GetSwarm());
@@ -128,16 +163,19 @@ void Graphics::Shutdown()
 
 bool Graphics::Tick(Input* input, float dt)
 {
-	bool result;
 	//generate the view matrix based on the camera's position
 	m_Camera->Tick(input, dt);
 
 	XMFLOAT3 target;
 	target = MouseToWorldCoords(input);
+
 	//tick all of the swarms
 	for (std::list<Swarm *>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)
 	{
-		(*swarm)->SetTarget(target);
+		if ((*swarm)->GetSwarmType() == SwarmType::PREDATOR)
+		{
+			(*swarm)->SetTarget(target);
+		}
 		(*swarm)->Tick(dt);
 	}
 	
@@ -163,7 +201,6 @@ bool Graphics::Tick(Input* input, float dt)
 bool Graphics::Render()
 {
 	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
-	bool result;
 
 	//clear buffers to begin the scene
 	m_D3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
@@ -194,7 +231,7 @@ XMFLOAT3 Graphics::MouseToWorldCoords(Input* input)
 {
 	float pointX, pointY;
 	XMFLOAT2 mousePos = input->GetMouseLocation();
-	XMMATRIX projectionMatrix, viewMatrix, inverseViewMatrix, worldMatrix, translateMatrix, inverseWorldMatrix;
+	XMMATRIX projectionMatrix, viewMatrix, inverseViewMatrix, worldMatrix, inverseWorldMatrix;
 
 	// Move the mouse cursor coordinates into the -1 to +1 range.
 	pointX = ((2.0f * (float)mousePos.x) / (float)SCREEN_WIDTH) - 1.0f;

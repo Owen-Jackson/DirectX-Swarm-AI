@@ -1,4 +1,7 @@
 #include "Swarm.h"
+#include "Agent.h"
+
+using namespace DirectX;
 
 Swarm::Swarm()
 {
@@ -18,10 +21,8 @@ void Swarm::InitialiseSwarm(ID3D11Device* device, HWND hWnd)
 		for (int j = 0; j < m_swarmWidth; j++)
 		{
 			Agent* agent = new Agent(this);
-			agent->SetPosition(XMFLOAT3(j * 2 + m_pos.x, i * 2, 0.0f));
+			agent->SetPosition(XMFLOAT3(j * m_agentScale + m_pos.x, i * m_agentScale + m_pos.y, 0.0f));
 			agent->SetScale(m_agentScale);
-			//m_instances[j + i*m_swarmHeight].worldMat = XMMatrixTranslation(-10.0f + j * 2 + m_pos.x, -10.0f + i * 2, 0.0f);
-			//m_instances[j + i*m_swarmHeight].worldMat = XMMatrixTranspose(m_instances[j + i*m_swarmHeight].worldMat);
 			m_agents.push_back(agent);
 		}
 	}
@@ -36,10 +37,8 @@ void Swarm::InitialiseSwarm(ID3D11Device* device, HWND hWnd, CollisionGrid* grid
 		for (int j = 0; j < m_swarmWidth; j++)
 		{
 			Agent* agent = new Agent(this);
-			agent->SetPosition(XMFLOAT3(j * 2 + m_pos.x, i * 2, 0.0f));
+			agent->SetPosition(XMFLOAT3(j * 2.0f * m_agentScale + m_pos.x, i * 2.0f * m_agentScale + m_pos.y, 0.0f));
 			agent->SetScale(m_agentScale);
-			//m_instances[j + i*m_swarmHeight].worldMat = XMMatrixTranslation(-10.0f + j * 2 + m_pos.x, -10.0f + i * 2, 0.0f);
-			//m_instances[j + i*m_swarmHeight].worldMat = XMMatrixTranspose(m_instances[j + i*m_swarmHeight].worldMat);
 			m_agents.push_back(agent);
 
 			//add the new agent to the collision grid
@@ -56,10 +55,6 @@ void Swarm::Shutdown()
 
 void Swarm::Tick(float dt)
 {
-	XMMATRIX scaleMat, rotMat, transMat;
-	XMVECTOR moveVec;
-	XMFLOAT3 movement;
-	//for (int i = 0; i < m_instanceCount; i++)
 	int i = 0;
 	for (std::vector<Agent*>::iterator agent = m_agents.begin(); agent != m_agents.end(); agent++)
 	{
@@ -81,6 +76,11 @@ std::vector<Agent*>& Swarm::GetSwarm()
 XMFLOAT3& Swarm::GetTarget()
 {
 	return m_swarmTarget;
+}
+
+SwarmType& Swarm::GetSwarmType()
+{
+	return m_swarmType;
 }
 
 void Swarm::SetInstanceCount(int swarmWidth, int swarmHeight)
@@ -109,4 +109,9 @@ void Swarm::SetSwarmPosition(XMFLOAT3 position)
 void Swarm::SetScale(float scale)
 {
 	m_agentScale = scale;
+}
+
+void Swarm::SetSwarmType(const SwarmType type)
+{
+	m_swarmType = type;
 }

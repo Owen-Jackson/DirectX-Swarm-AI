@@ -8,7 +8,7 @@
 #include "Camera.h"
 #include "ShapeIncludes.h"
 #include "ColorShaderClass.h"
-#include "Swarm.h"
+#include "Shoal.h"
 #include "CollisionGrid.h"
 
 //globals
@@ -29,7 +29,7 @@ public:
 	void Shutdown();
 	bool Tick(Input*, float);
 	bool Render();
-	XMFLOAT3 MouseToWorldCoords(Input*);	//converts screen coords to world coords
+	DirectX::XMFLOAT3 MouseToWorldCoords(Input*);	//converts screen coords to world coords
 private:
 	D3DClass* m_D3D;
 	Camera* m_Camera;

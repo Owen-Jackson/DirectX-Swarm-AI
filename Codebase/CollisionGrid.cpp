@@ -1,5 +1,8 @@
 #include "CollisionGrid.h"
+#include "Agent.h"
 #include <string>
+
+using namespace DirectX;
 
 CollisionGrid::CollisionGrid()
 {
@@ -23,7 +26,7 @@ CollisionGrid::CollisionGrid(int width, int height, float scale)
 
 	//resize the grid cells grid
 	m_gridCells.resize(m_numberOfXCells * m_numberOfYCells);
-	for (int i = 0; i < m_gridCells.size() - 1; i++)
+	for (size_t i = 0; i < m_gridCells.size() - 1; i++)
 	{
 		m_gridCells[i].cellNumber = i;
 	}
@@ -106,7 +109,7 @@ void CollisionGrid::RemoveAgentFromCell(Agent* agent)
 	agents.pop_back();
 
 	//update the vector index
-	if (agent->GetGridCellVectorIndex() < agents.size())
+	if ((size_t)agent->GetGridCellVectorIndex() < agents.size())
 	{
 		agents[agent->GetGridCellVectorIndex()]->SetGridCellVectorIndex(agent->GetGridCellVectorIndex());
 	}
@@ -163,7 +166,7 @@ void CollisionGrid::CheckWallCollisions(Agent* agent)
 
 void CollisionGrid::CheckCollision(Agent* agent, std::vector<Agent*>& agentsToCheck, int startingIndex)
 {
-	for (int i = startingIndex; i < agentsToCheck.size(); i++)
+	for (size_t i = startingIndex; i < agentsToCheck.size(); i++)
 	{
 		CheckCollision(agent, agentsToCheck[i]);
 	}
@@ -189,16 +192,25 @@ void CollisionGrid::CheckCollision(Agent* a1, Agent* a2)
 	//check for collision
 	if (collisionDepth > 0)
 	{
-		//push away the second agent
-		a1->GetPosition().x -= distanceDir.x * collisionDepth;
-		a1->GetPosition().y -= distanceDir.y * collisionDepth;
-		a1->GetPosition().z -= distanceDir.z * collisionDepth;
+		//push away the smaller agent
+		if (a1->GetScale() < a2->GetScale())
+		{
+			a1->GetPosition().x -= distanceDir.x * collisionDepth;
+			a1->GetPosition().y -= distanceDir.y * collisionDepth;
+			a1->GetPosition().z -= distanceDir.z * collisionDepth;
+		}
+		else
+		{
+			a2->GetPosition().x += distanceDir.x * collisionDepth;
+			a2->GetPosition().y += distanceDir.y * collisionDepth;
+			a2->GetPosition().z += distanceDir.z * collisionDepth;
+		}
 	}
 }
 
 void CollisionGrid::UpdateCollisions()
 {
-	for (int i = 0; i < m_gridCells.size(); i++)
+	for (size_t i = 0; i < m_gridCells.size(); i++)
 	{
 		if (m_gridCells[i].agentList.size() > 0)
 		{
@@ -208,9 +220,8 @@ void CollisionGrid::UpdateCollisions()
 			GridCell& cell = m_gridCells[i];
 
 			//loop through all agents in the cell
-			for (int j = 0; j < cell.agentList.size(); j++)
+			for (size_t j = 0; j < cell.agentList.size(); j++)
 			{
-				int count = 0;	//used to count the number of agents to separate from
 				Agent* agent = cell.agentList[j];
 				//check for this cell
 				CheckCollision(agent, cell.agentList, j + 1);
@@ -242,6 +253,108 @@ void CollisionGrid::UpdateCollisions()
 	}
 }
 
+/*
+//check separation against a list
+int CollisionGrid::CheckSeparation(Agent* agent, std::vector<Agent*>& agentsToCheck, int startingIndex)
+{
+	int count = 0;
+	for (size_t i = startingIndex; i < agentsToCheck.size(); i++)
+	{
+		if (CheckSeparation(agent, agentsToCheck[i]))
+		{
+			count++;
+		}
+	}
+	return count;
+}
+
+//check separation between two agents
+bool CollisionGrid::CheckSeparation(Agent* a1, Agent* a2)
+{
+	XMFLOAT3 distance;
+	XMVECTOR difference = XMVectorSubtract(XMLoadFloat3(&a1->GetPosition()), XMLoadFloat3(&a2->GetPosition()));
+	XMVECTOR distanceVec = XMVector3Length(difference);
+	XMStoreFloat3(&distance, distanceVec);
+
+	if (distance.x < 5.0f)
+	{
+		difference = XMVector3Normalize(difference);
+		if (a1->GetScale() < a2->GetScale())
+		{
+			XMStoreFloat3(&a1->GetSeparation(), XMVectorAdd(XMLoadFloat3(&a1->GetSeparation()), difference));
+		}
+		else
+		{
+			XMStoreFloat3(&a2->GetSeparation(), XMVectorAdd(XMLoadFloat3(&a2->GetSeparation()), difference));
+		}
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void CollisionGrid::UpdateSeparations()
+{
+	//count for how many agents to separate from, used for the average separation
+	int count = 0;
+	//go through each cell
+	for (size_t i = 0; i < m_gridCells.size(); i++)
+	{
+		//if the cell has at least one agent
+		if (m_gridCells[i].agentList.size() > 0)
+		{
+			int x = i % m_numberOfXCells;
+			int y = i / m_numberOfXCells;
+
+			GridCell& cell = m_gridCells[i];
+
+			//loop through all agents in the cell
+			for (size_t j = 0; j < cell.agentList.size(); j++)
+			{
+				Agent* agent = (Agent*)cell.agentList[j];
+
+				//zero the separation float
+				agent->GetSeparation() = XMFLOAT3(0, 0, 0);
+				//reset count
+				count = 0;
+
+				//check for this cell
+				count += CheckSeparation(agent, cell.agentList, j + 1);
+
+				//check neighbouring cells
+				//left checks
+				if (x > 0)
+				{
+					//middle left
+					count += CheckSeparation(agent, GetCell(x - 1, y)->agentList, 0);
+					//top left
+					if (y > 0)
+					{
+						count += CheckSeparation(agent, GetCell(x - 1, y - 1)->agentList, 0);
+					}
+					//bottom left
+					if (y < m_numberOfYCells - 1)
+					{
+						count += CheckSeparation(agent, GetCell(x - 1, y + 1)->agentList, 0);
+					}
+				}
+				//above cell
+				if (y > 0)
+				{
+					count += CheckSeparation(agent, GetCell(x, y - 1)->agentList, 0);
+				}
+				//if the count is greater than zero we need to separate ourselves
+				if (count > 0)
+				{
+					agent->Separate(count);
+				}
+			}
+		}
+	}
+}
+*/
 void CollisionGrid::Tick(float dt)
 {
 	//Loop through all agents in the grid and tick their movement
@@ -251,7 +364,7 @@ void CollisionGrid::Tick(float dt)
 		(*agent)->Tick(dt);
 
 		CheckWallCollisions(*agent);
-
+		
 		//check if the agent has changed cells
 		GridCell* newCell = GetCell((*agent)->GetPosition());
 		if (newCell != (*agent)->GetGridCell())
@@ -260,9 +373,7 @@ void CollisionGrid::Tick(float dt)
 			AddAgentToCell(*agent, newCell);
 		}
 	}
-	
+
 	//check and update collisions for each agent by using the grid cells also separate the agents (boids)
 	UpdateCollisions();
-
-	//if there is a collision here then separate the agents
 }

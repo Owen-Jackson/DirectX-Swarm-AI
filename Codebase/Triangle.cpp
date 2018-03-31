@@ -15,16 +15,16 @@ void Triangle::SetupVertices()
 	m_vertices = new VertexType[m_vertexCount];
 
 	//bottom left
-	m_vertices[0].position = XMFLOAT3(-1.0f, -1.0f, 0.0f);
-	m_vertices[0].color = XMFLOAT4(m_color);
+	m_vertices[0].position = DirectX::XMFLOAT3(-1.0f, -1.0f, 0.0f);
+	m_vertices[0].color = DirectX::XMFLOAT4(m_color);
 
 	//top middle
-	m_vertices[1].position = XMFLOAT3(0.0f, 1.0f, 0.0f);
-	m_vertices[1].color = XMFLOAT4(m_color);
+	m_vertices[1].position = DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f);
+	m_vertices[1].color = DirectX::XMFLOAT4(m_color);
 
 	//bottom right
-	m_vertices[2].position = XMFLOAT3(1.0f, -1.0f, 0.0f);
-	m_vertices[2].color = XMFLOAT4(m_color);
+	m_vertices[2].position = DirectX::XMFLOAT3(1.0f, -1.0f, 0.0f);
+	m_vertices[2].color = DirectX::XMFLOAT4(m_color);
 	return;
 }
 

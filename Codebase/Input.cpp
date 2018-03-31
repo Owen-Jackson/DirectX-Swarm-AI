@@ -1,5 +1,7 @@
 #include "Input.h"
 
+using namespace DirectX;
+
 Input::Input()
 {
 	m_directInput = nullptr;
@@ -185,7 +187,6 @@ void Input::ProcessInput(HWND hWnd)
 	//update the location of the mouse cursor
 	
 	POINT mousePos;
-	RECT rect;
 	GetCursorPos(&mousePos);
 	ScreenToClient(hWnd, &mousePos);
 	m_mouseX = mousePos.x;
@@ -195,7 +196,7 @@ void Input::ProcessInput(HWND hWnd)
 	//m_mouseY += m_mouseState.lY;
 
 	//update mousewheel scroll
-	m_mouseWheelDelta = m_mouseState.lZ;
+	m_mouseWheelDelta = (float)m_mouseState.lZ;
 
 	//make sure the mouse location isn't out of bounds
 	if (m_mouseX < 0)
@@ -243,9 +244,9 @@ bool Input::IsEscapePressed()
 	return false;
 }
 
-XMFLOAT2 Input::GetMouseLocation()
+DirectX::XMFLOAT2 Input::GetMouseLocation()
 {
-	return XMFLOAT2(m_mouseX, m_mouseY);
+	return DirectX::XMFLOAT2((float)m_mouseX, (float)m_mouseY);
 }
 
 float Input::GetMouseWheel()

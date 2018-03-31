@@ -6,16 +6,14 @@
 #include <DirectXMath.h>
 #include <d3dcompiler.h>
 
-using namespace DirectX;
-
 class ColorShaderClass
 {
 private:
 	struct MatrixBufferType
 	{
-		XMMATRIX world;
-		XMMATRIX view;
-		XMMATRIX projection;
+		DirectX::XMMATRIX world;
+		DirectX::XMMATRIX view;
+		DirectX::XMMATRIX projection;
 	};
 
 public:
@@ -24,7 +22,7 @@ public:
 
 	bool Initialise(ID3D11Device*, HWND);
 	void Shutdown();
-	bool SetShaderParameters(ID3D11DeviceContext*, XMMATRIX, XMMATRIX, XMMATRIX);
+	bool SetShaderParameters(ID3D11DeviceContext*, DirectX::XMMATRIX, DirectX::XMMATRIX, DirectX::XMMATRIX);
 	bool Render(ID3D11DeviceContext*, int, int);
 
 private:

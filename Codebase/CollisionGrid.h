@@ -4,8 +4,9 @@
 
 #include "Grid.h"
 #include "GridCell.h"
-#include "Agent.h"
 #include <vector>
+
+class Agent;
 
 //this class will be used for checking swarm collisions
 class CollisionGrid : public Grid
@@ -16,7 +17,7 @@ public:
 	~CollisionGrid();
 
 	GridCell* GetCell(int, int);	//gets the cell at coordidnates
-	GridCell* GetCell(XMFLOAT3);	//get which cell contains this position
+	GridCell* GetCell(DirectX::XMFLOAT3);	//get which cell contains this position
 	float& GetMaxX();
 	float& GetMaxY();
 
@@ -28,6 +29,9 @@ public:
 	void CheckCollision(Agent*, std::vector<Agent*>&, int);		//collision check between an agent and a group of other agents
 	void CheckCollision(Agent*, Agent*);						//returns true if the two agents are colliding
 	void UpdateCollisions();
+	int CheckSeparation(Agent*, std::vector<Agent*>&, int);
+	bool CheckSeparation(Agent*, Agent*);
+	void UpdateSeparations();
 
 	void Tick(float) override;
 private:

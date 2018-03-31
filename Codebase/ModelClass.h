@@ -6,9 +6,9 @@
 #include <DirectXMath.h>
 #include "ColorShaderClass.h"
 
-struct InstanceType	//passed into the shader
+__declspec(align(16)) struct InstanceType	//passed into the shader
 {
-	XMMATRIX worldMat;
+	DirectX::XMMATRIX worldMat;
 };
 
 class ModelClass
@@ -16,42 +16,31 @@ class ModelClass
 protected:
 	struct VertexType
 	{
-		XMFLOAT3 position;
-		XMFLOAT4 color;
+		DirectX::XMFLOAT3 position;
+		DirectX::XMFLOAT4 color;
 	};
 
-	/*
-	struct InstanceData	//used for setting up the instance's world matrix each tick
-	{
-		float rot = 0;
-		float speed = 0.1f;
-		XMFLOAT3 pos;
-		XMFLOAT3 vel;
-		XMFLOAT3 move_dir;
-		XMFLOAT3 acc;
-	};
-	*/
 public:
 	ModelClass();
-	~ModelClass();
+	virtual ~ModelClass();
 
 	bool Initialise(ID3D11Device*, HWND);
 	void Shutdown();
-	void Render(ID3D11DeviceContext*, XMMATRIX, XMMATRIX, XMMATRIX);
+	void Render(ID3D11DeviceContext*, DirectX::XMMATRIX, DirectX::XMMATRIX, DirectX::XMMATRIX);
 	virtual void Tick(float) {};
 
 	int& GetIndexCount();
 	int& GetVertexCount();
 	int& GetInstanceCount();
 	float& GetScale();
-	XMFLOAT3& GetPosition();
+	DirectX::XMFLOAT3& GetPosition();
 	ColorShaderClass* GetColorShader();
 	InstanceType* GetInstances();
 
 	void AddInstances(int);
 	void RenderBuffers(ID3D11DeviceContext*);
-	void SetColor(XMFLOAT4);	
-	void SetPosition(XMFLOAT3);
+	void SetColor(DirectX::XMFLOAT4);
+	void SetPosition(DirectX::XMFLOAT3);
 	void SetInstanceCount(int, int);
 	void SetScale(float);
 	/*
@@ -88,8 +77,8 @@ protected:
 
 	ColorShaderClass* m_ColorShader;
 
-	XMFLOAT3 m_pos;
-	XMFLOAT4 m_color;
+	DirectX::XMFLOAT3 m_pos;
+	DirectX::XMFLOAT4 m_color;
 	float m_scale = 1;
 
 	//float m_moveSpeed;
