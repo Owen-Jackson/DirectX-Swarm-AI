@@ -37,7 +37,7 @@ void Swarm::InitialiseSwarm(ID3D11Device* device, HWND hWnd, CollisionGrid* grid
 		for (int j = 0; j < m_swarmWidth; j++)
 		{
 			Agent* agent = new Agent(this);
-			agent->SetPosition(XMFLOAT3(j * 2.0f * m_agentScale + m_pos.x, i * 2.0f * m_agentScale + m_pos.y, 0.0f));
+			agent->SetPosition(XMFLOAT3(j * 2.0f * m_agentScale + m_pos.x + (j - m_swarmWidth * m_agentScale), i * 2.0f * m_agentScale + m_pos.y + (i - m_swarmHeight * m_agentScale), 0.0f));
 			agent->SetScale(m_agentScale);
 			m_agents.push_back(agent);
 
@@ -49,8 +49,11 @@ void Swarm::InitialiseSwarm(ID3D11Device* device, HWND hWnd, CollisionGrid* grid
 
 void Swarm::Shutdown()
 {
-	m_model->Shutdown();
-	delete m_model;
+	for (std::vector<Agent*>::iterator agent = m_agents.begin(); agent != m_agents.end(); agent++)
+	{
+		delete (*agent);
+	}
+	m_agents.clear();
 }
 
 void Swarm::Tick(float dt)

@@ -355,6 +355,7 @@ void CollisionGrid::UpdateSeparations()
 	}
 }
 */
+
 void CollisionGrid::Tick(float dt)
 {
 	//Loop through all agents in the grid and tick their movement

@@ -29,9 +29,9 @@ public:
 	void CheckCollision(Agent*, std::vector<Agent*>&, int);		//collision check between an agent and a group of other agents
 	void CheckCollision(Agent*, Agent*);						//returns true if the two agents are colliding
 	void UpdateCollisions();
-	int CheckSeparation(Agent*, std::vector<Agent*>&, int);
-	bool CheckSeparation(Agent*, Agent*);
-	void UpdateSeparations();
+	//int CheckSeparation(Agent*, std::vector<Agent*>&, int);
+	//bool CheckSeparation(Agent*, Agent*);
+	//void UpdateSeparations();
 
 	void Tick(float) override;
 private:

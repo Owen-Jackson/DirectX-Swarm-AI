@@ -53,6 +53,7 @@ protected:
 	float m_sqDistFromTarget = 0;
 	float m_minSqDistFromTarget = 10.0f;
 	GridCell* m_currentGridCell = nullptr;
+	//DirectX::XMFLOAT3 m_separationVec;
 	int m_cellVectorIndex = -1;	//where the agent is in it's cell vector
 };
 #endif // !_AGENT_

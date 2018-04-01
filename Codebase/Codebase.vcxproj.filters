@@ -119,9 +119,6 @@
     <ClInclude Include="ShapeIncludes.h">
       <Filter>Header Files\Shapes&amp;Models</Filter>
     </ClInclude>
-    <ClInclude Include="FontClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ModelClass.h">
       <Filter>Header Files\Shapes&amp;Models</Filter>
     </ClInclude>

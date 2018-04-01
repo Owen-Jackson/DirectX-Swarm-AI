@@ -94,10 +94,12 @@ float& Agent::GetScale()
 	return m_scale;
 }
 
-//XMFLOAT3& Agent::GetSeparation()
-//{
-//	return m_separationVec;
-//}
+/*
+XMFLOAT3& Agent::GetSeparation()
+{
+	return m_separationVec;
+}
+*/
 
 void Agent::Tick(float dt)
 {
@@ -172,7 +174,7 @@ void Agent::Separate(int& count)
 	sum /= (float)count;
 	sum *= m_maxSpeed;
 	XMFLOAT3 steer;
-	XMStoreFloat3(&steer, XMVectorSubtract(sum, XMLoadFloat3(&m_acc)));
+	XMStoreFloat3(&steer, XMVectorSubtract(sum, XMLoadFloat3(&m_vel)));
 	m_acc.x += steer.x;
 	m_acc.y += steer.y;
 }

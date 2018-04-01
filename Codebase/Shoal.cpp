@@ -18,7 +18,7 @@ void Shoal::InitialiseSwarm(ID3D11Device* device, HWND hWnd)
 		for (int j = 0; j < m_swarmWidth; j++)
 		{
 			Fish* agent = new Fish(this, m_rotatingClockwise);
-			agent->SetPosition(DirectX::XMFLOAT3(j * m_agentScale + m_pos.x, i * m_agentScale + m_pos.y, 0.0f));
+			agent->SetPosition(DirectX::XMFLOAT3(j * 2.0f * m_agentScale + m_pos.x + (j - m_swarmWidth * m_agentScale), i * 2.0f * m_agentScale + m_pos.y + (i - m_swarmHeight * m_agentScale), 0.0f));
 			agent->SetScale(m_agentScale);
 			m_agents.push_back(agent);
 		}
@@ -34,7 +34,7 @@ void Shoal::InitialiseSwarm(ID3D11Device* device, HWND hWnd, CollisionGrid* grid
 		for (int j = 0; j < m_swarmWidth; j++)
 		{
 			Fish* agent = new Fish(this, m_rotatingClockwise);
-			agent->SetPosition(DirectX::XMFLOAT3(j * m_agentScale * 2.0f + m_pos.x, i * m_agentScale * 2.0f+ m_pos.y, 0.0f));
+			agent->SetPosition(DirectX::XMFLOAT3(j * m_agentScale + m_pos.x + (j - m_swarmWidth * m_agentScale), i* m_agentScale + m_pos.y + (i - m_swarmHeight * m_agentScale), 0.0f));
 			agent->SetScale(m_agentScale);
 			m_agents.push_back(agent);
 

@@ -115,15 +115,6 @@ InstanceType* ModelClass::GetInstances()
 	return m_instances;
 }
 
-void ModelClass::AddInstances(int numInstances)
-{
-	InstanceType* instance;
-	for (int i = 0; i < numInstances; i++)
-	{
-		instance = (struct InstanceType*)_mm_malloc(sizeof(struct InstanceType), 16);
-	}
-}
-
 void ModelClass::SetColor(XMFLOAT4 color)
 {
 	m_color = color;
@@ -196,13 +187,15 @@ bool ModelClass::InitialiseBuffers(ID3D11Device* device)
 	}
 	*/
 
-	m_instances = (struct InstanceType*)_mm_malloc(sizeof(struct InstanceType) * m_instanceCount, 16);
-	for (int i = 0; i < m_spawnGridHeight; i++)
+	m_instances = new InstanceType[m_instanceCount]; //(struct InstanceType*)_aligned_malloc(sizeof(struct InstanceType) * m_instanceCount, 16);
 	{
-		for (int j = 0; j < m_spawnGridWidth; j++)
+		for (int i = 0; i < m_spawnGridHeight; i++)
 		{
-			m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixScaling(m_scale, m_scale, m_scale) * XMMatrixTranslation(j * m_scale + m_pos.x, i * m_scale + m_pos.y, 0.0f);
-			m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixTranspose(m_instances[j + i*m_spawnGridHeight].worldMat);
+			for (int j = 0; j < m_spawnGridWidth; j++)
+			{
+				m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixScaling(m_scale, m_scale, m_scale) * XMMatrixTranslation(j * m_scale + m_pos.x, i * m_scale + m_pos.y, 0.0f);
+				m_instances[j + i*m_spawnGridHeight].worldMat = XMMatrixTranspose(m_instances[j + i*m_spawnGridHeight].worldMat);
+			}
 		}
 	}
 	

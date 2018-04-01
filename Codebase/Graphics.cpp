@@ -40,7 +40,7 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	}
 
 	//collision test grid
-	CollisionGrid* collisionGrid = new CollisionGrid(100, 100, 5);
+	CollisionGrid* collisionGrid = new CollisionGrid(100, 100, 4);
 	collisionGrid->SetColor(XMFLOAT4(1.0f, 1.0f, 1.0f, 0.5f));
 	m_models.push_back(collisionGrid);
 
@@ -49,7 +49,7 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	gridCentre.x = collisionGrid->GetMaxX() / 2;
 	gridCentre.y = collisionGrid->GetMaxY() / 2;
 	gridCentre.z = 0;
-	m_Camera->SetPosition(XMFLOAT3(gridCentre.x, gridCentre.y, -50.0f));
+	m_Camera->SetPosition(XMFLOAT3(gridCentre.x, gridCentre.y, -200.0f));
 
 	//add swarm(s)		
 	Shoal* greenShoal = new Shoal();
@@ -82,7 +82,7 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 
 	//add swarm(s)		
 	Shoal* orangeShoal = new Shoal();
-	orangeShoal->SetInstanceCount(100, 100);
+	orangeShoal->SetInstanceCount(50, 50);
 	orangeShoal->SetSwarmColor(XMFLOAT4(1.0f, 0.5f, 0.0f, 1.0f));
 	orangeShoal->SetSwarmPosition(XMFLOAT3(gridCentre.x + (gridCentre.x / 2), gridCentre.y - (gridCentre.x / 2), 0));
 	orangeShoal->SetSwarmType(SwarmType::PREY);
@@ -90,13 +90,12 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	m_swarms.push_back(orangeShoal);
 	
 	Swarm* sharks = new Swarm();
-	sharks->SetInstanceCount(3, 3);
+	sharks->SetInstanceCount(10, 10);
 	sharks->SetSwarmColor(XMFLOAT4(1.0f, 0.0f, 0.0f, 0.0f));
-	sharks->SetSwarmPosition(gridCentre);
+	sharks->SetSwarmPosition(XMFLOAT3(gridCentre.x, gridCentre.y, 0));
 	sharks->SetSwarmType(SwarmType::PREDATOR);
 	sharks->SetScale(2.0f);
 	m_swarms.push_back(sharks);
-	
 
 	//add swarm models to the models list
 	for (std::list<Swarm*>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)

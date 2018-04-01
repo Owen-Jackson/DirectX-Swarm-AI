@@ -9,6 +9,17 @@
 __declspec(align(16)) struct InstanceType	//passed into the shader
 {
 	DirectX::XMMATRIX worldMat;
+
+	//this needs to be aligned to 16 to work with XMatrix function overloads
+	void* operator new(size_t i)
+	{
+		return _aligned_malloc(i, 16);
+	}
+
+	void operator delete(void* p)
+	{
+		_aligned_free(p);
+	}
 };
 
 class ModelClass
@@ -37,7 +48,6 @@ public:
 	ColorShaderClass* GetColorShader();
 	InstanceType* GetInstances();
 
-	void AddInstances(int);
 	void RenderBuffers(ID3D11DeviceContext*);
 	void SetColor(DirectX::XMFLOAT4);
 	void SetPosition(DirectX::XMFLOAT3);
