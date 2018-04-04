@@ -15,8 +15,8 @@ public:
 	Swarm();
 	virtual ~Swarm();
 
-	virtual void InitialiseSwarm(ID3D11Device*, HWND);	//initialise without collision grid
-	virtual void InitialiseSwarm(ID3D11Device*, HWND, CollisionGrid*);	//initialise with collision grid
+	virtual void InitialiseSwarm();	//initialise without collision grid
+	virtual void InitialiseSwarm(CollisionGrid*);	//initialise with collision grid
 	void Shutdown();
 	void Tick(float);
 

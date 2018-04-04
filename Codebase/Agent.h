@@ -38,7 +38,6 @@ public:
 protected:
 	virtual void Steer(DirectX::XMFLOAT3);	//override for different steering behaviours
 	void Arrive(DirectX::XMFLOAT3);
-	Swarm* m_parentSwarm = nullptr;
 	bool m_alive = true;
 	float m_rot = 0;
 	float m_maxSpeed = 5.0f;
@@ -52,6 +51,7 @@ protected:
 	DirectX::XMFLOAT3 m_vel = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 	float m_sqDistFromTarget = 0;
 	float m_minSqDistFromTarget = 10.0f;
+	Swarm* m_parentSwarm = nullptr;
 	GridCell* m_currentGridCell = nullptr;
 	//DirectX::XMFLOAT3 m_separationVec;
 	int m_cellVectorIndex = -1;	//where the agent is in it's cell vector

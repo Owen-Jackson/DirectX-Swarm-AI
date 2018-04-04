@@ -12,7 +12,7 @@ Swarm::~Swarm()
 {
 }
 
-void Swarm::InitialiseSwarm(ID3D11Device* device, HWND hWnd)
+void Swarm::InitialiseSwarm()
 {
 	m_instances = m_model->GetInstances();
 
@@ -28,7 +28,8 @@ void Swarm::InitialiseSwarm(ID3D11Device* device, HWND hWnd)
 	}
 }
 
-void Swarm::InitialiseSwarm(ID3D11Device* device, HWND hWnd, CollisionGrid* grid)
+//inisitalise swarm when the collision grid is present
+void Swarm::InitialiseSwarm(CollisionGrid* grid)
 {
 	m_instances = m_model->GetInstances();
 

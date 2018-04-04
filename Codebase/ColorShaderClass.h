@@ -22,7 +22,7 @@ public:
 
 	bool Initialise(ID3D11Device*, HWND);
 	void Shutdown();
-	bool SetShaderParameters(ID3D11DeviceContext*, DirectX::XMMATRIX, DirectX::XMMATRIX, DirectX::XMMATRIX);
+	bool SetShaderParameters(ID3D11DeviceContext*, const DirectX::XMMATRIX&, const DirectX::XMMATRIX&, const DirectX::XMMATRIX&);
 	bool Render(ID3D11DeviceContext*, int, int);
 
 private:

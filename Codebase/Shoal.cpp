@@ -9,7 +9,7 @@ Shoal::~Shoal()
 {
 }
 
-void Shoal::InitialiseSwarm(ID3D11Device* device, HWND hWnd)
+void Shoal::InitialiseSwarm()
 {
 	m_instances = m_model->GetInstances();
 
@@ -25,7 +25,7 @@ void Shoal::InitialiseSwarm(ID3D11Device* device, HWND hWnd)
 	}
 }
 
-void Shoal::InitialiseSwarm(ID3D11Device* device, HWND hWnd, CollisionGrid* grid)
+void Shoal::InitialiseSwarm(CollisionGrid* grid)
 {
 	m_instances = m_model->GetInstances();
 

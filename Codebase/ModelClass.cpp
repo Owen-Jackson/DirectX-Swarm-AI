@@ -59,7 +59,7 @@ void ModelClass::Shutdown()
 	return;
 }
 
-void ModelClass::Render(ID3D11DeviceContext* deviceContext, XMMATRIX worldMatrix, XMMATRIX viewMatrix, XMMATRIX projectionMatrix)
+void ModelClass::Render(ID3D11DeviceContext* deviceContext, const XMMATRIX& worldMatrix, const XMMATRIX& viewMatrix, const XMMATRIX& projectionMatrix)
 {
 	bool result;
 
@@ -173,21 +173,7 @@ bool ModelClass::InitialiseBuffers(ID3D11Device* device)
 	}
 
 	//set number of instances
-	/*
-	InstanceType* instance;
-	for (int i = 0; i < m_swarmHeight; i++)
-	{
-		for (int j = 0; j < m_swarmWidth; j++)
-		{
-			instance = new InstanceType();
-			instance->position = XMFLOAT3(-10.0f + (j * 2.0f) + m_pos.x, -10.0f + (i * 2.0f) + m_pos.y, 0.0f + m_pos.z);
-			instance->worldMat = XMMatrixIdentity();
-			//m_instances.push_back(instance);
-		}
-	}
-	*/
-
-	m_instances = new InstanceType[m_instanceCount]; //(struct InstanceType*)_aligned_malloc(sizeof(struct InstanceType) * m_instanceCount, 16);
+	m_instances = new InstanceType[m_instanceCount];
 	{
 		for (int i = 0; i < m_spawnGridHeight; i++)
 		{

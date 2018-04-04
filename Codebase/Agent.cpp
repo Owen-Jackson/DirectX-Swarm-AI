@@ -1,6 +1,6 @@
 #include "Agent.h"
 #include "Swarm.h"
-#include <algorithm>
+#include "Helpers.h"
 
 using namespace DirectX;
 
@@ -112,7 +112,7 @@ void Agent::Tick(float dt)
 
 	//move the agent in their move direction
 	Steer(target);
-	float velMultiplier = std::clamp(m_sqDistFromTarget / (m_minSqDistFromTarget), 0.0f, 1.0f);
+	float velMultiplier = Helpers::Clip(m_sqDistFromTarget / (m_minSqDistFromTarget), 0.0f, 1.0f);
 
 	m_vel.x = m_acc.x * dt * m_maxSpeed * velMultiplier;
 	m_vel.y = m_acc.y * dt * m_maxSpeed * velMultiplier;

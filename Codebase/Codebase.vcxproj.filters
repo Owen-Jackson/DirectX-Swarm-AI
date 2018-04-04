@@ -93,6 +93,9 @@
     <ClCompile Include="Shoal.cpp">
       <Filter>Source Files\GameObjects\AI</Filter>
     </ClCompile>
+    <ClCompile Include="Helpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="Shoal.h">
       <Filter>Header Files\GameObjects\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

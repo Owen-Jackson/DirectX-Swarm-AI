@@ -76,7 +76,6 @@ void Camera::Render()
 
 	//above values stored as vectors for directX math functions
 	XMVECTOR upVector = XMLoadFloat3(&up);
-
 	XMVECTOR positionVector = XMLoadFloat3(&position);
 
 	lookAt.x = 0.0f;

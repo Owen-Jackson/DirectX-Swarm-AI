@@ -184,16 +184,12 @@ bool Input::ReadMouse()
 
 void Input::ProcessInput(HWND hWnd)
 {
-	//update the location of the mouse cursor
-	
+	//update the location of the mouse cursor	
 	POINT mousePos;
 	GetCursorPos(&mousePos);
 	ScreenToClient(hWnd, &mousePos);
 	m_mouseX = mousePos.x;
 	m_mouseY = mousePos.y;	
-
-	//m_mouseX += m_mouseState.lX;
-	//m_mouseY += m_mouseState.lY;
 
 	//update mousewheel scroll
 	m_mouseWheelDelta = (float)m_mouseState.lZ;
@@ -232,7 +228,7 @@ bool Input::IsKeyPressed(const int key)
 	return false;
 }
 
-//template for button presses
+//used for quiting the application
 bool Input::IsEscapePressed()
 {
 	//check if escape has been pressed

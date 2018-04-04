@@ -37,7 +37,7 @@ public:
 
 	bool Initialise(ID3D11Device*, HWND);
 	void Shutdown();
-	void Render(ID3D11DeviceContext*, DirectX::XMMATRIX, DirectX::XMMATRIX, DirectX::XMMATRIX);
+	void Render(ID3D11DeviceContext*, const DirectX::XMMATRIX&, const DirectX::XMMATRIX&, const DirectX::XMMATRIX&);
 	virtual void Tick(float) {};
 
 	int& GetIndexCount();
@@ -53,11 +53,7 @@ public:
 	void SetPosition(DirectX::XMFLOAT3);
 	void SetInstanceCount(int, int);
 	void SetScale(float);
-	/*
-	void SetRotation(XMFLOAT3);
-	void SetMoveSpeed(float speed);
-	void SetMoveDirection(XMFLOAT3 dir);
-	*/
+
 protected:
 	bool InitialiseBuffers(ID3D11Device*);
 	void ShutdownBuffers();
@@ -73,8 +69,6 @@ protected:
 
 	VertexType* m_vertices;
 	InstanceType* m_instances;
-	//InstanceData* m_agentData;
-	//std::list<Agent*> m_agents;
 	unsigned long* m_indices;
 
 	//width and height of the grid to setup the instances in
@@ -90,9 +84,6 @@ protected:
 	DirectX::XMFLOAT3 m_pos;
 	DirectX::XMFLOAT4 m_color;
 	float m_scale = 1;
-
-	//float m_moveSpeed;
-	//XMFLOAT3 m_swarmTarget;
 
 	//used when using the mouse
 	int m_clientWidth;

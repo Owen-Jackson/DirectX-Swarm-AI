@@ -20,7 +20,6 @@ public:
 
 	bool IsKeyPressed(const int);
 	bool IsEscapePressed();
-	bool IsMouseLeftClicked();
 	DirectX::XMFLOAT2 GetMouseLocation();
 	float GetMouseWheel();
 
