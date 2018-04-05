@@ -42,31 +42,22 @@ void Fish::SetIsRotatingClockwise(bool isClockwise)
 
 void Fish::Steer(XMFLOAT3 target)
 {
-	//calculate the desired velocity, i.e. swim around the target
-	XMVECTOR desiredVelVec = XMVectorSubtract(XMLoadFloat3(&target), XMLoadFloat3(&m_pos));
-	XMFLOAT3 sqDistanceFromCentre;	//store the distance from the centre of the swarm
-	XMStoreFloat3(&sqDistanceFromCentre, XMVector3LengthSq(desiredVelVec));
+	//get the acceleration toward the target
+	XMVECTOR finalAcc = XMVectorSubtract(XMLoadFloat3(&target), XMLoadFloat3(&m_pos));
+
+	//store the distance from the centre of the swarm
+	XMFLOAT3 sqDistanceFromCentre;
+	XMStoreFloat3(&sqDistanceFromCentre, XMVector3LengthSq(finalAcc));
 	m_sqDistFromTarget = sqDistanceFromCentre.x;
 
-	//get the normal acceleration
-	XMVECTOR desiredAccVec = XMVector3Normalize(desiredVelVec);
-
-	//get the tangential acceleration (this is just the current acceleration)
-	XMVECTOR tangentialVec = XMLoadFloat3(&m_acc);
-
-	//get the angle to rotate towards
-	tangentialVec = desiredVelVec;
-
-	//combine to get the desired acceleration
-	XMVECTOR finalAcc = XMVectorAdd(desiredVelVec, tangentialVec);
-
-	//calculate the vector needed to steer towards the desired velocity
-	finalAcc = XMVector3Normalize(finalAcc); //XMVector3Normalize(finalAcc);
+	//calculate the vector needed to steer towards the desired acceleration
+	finalAcc = XMVector3Normalize(finalAcc);
 	finalAcc *= m_maxSpeed;
 
-	XMFLOAT3 desiredVelFloat;
-	XMStoreFloat3(&desiredVelFloat, finalAcc);
+	XMFLOAT3 desiredAccFloat;
+	XMStoreFloat3(&desiredAccFloat, finalAcc);
 	
+	//calculate how much to rotate the desired vector by
 	float rotationAngle = 0;
 	if (m_isRotatingClockwise)
 	{
@@ -78,14 +69,16 @@ void Fish::Steer(XMFLOAT3 target)
 	}
 
 	float rad = XMConvertToRadians(rotationAngle);
-	float x = desiredVelFloat.x;
-	float y = desiredVelFloat.y;
+	float x = desiredAccFloat.x;
+	float y = desiredAccFloat.y;
 
-	desiredVelFloat.x = x * cos(rad) - y * sin(rad);
-	desiredVelFloat.y = y * cos(rad) + x * sin(rad);
-	m_rot = std::atan2f(desiredVelFloat.y, desiredVelFloat.x);
-	finalAcc = XMLoadFloat3(&desiredVelFloat);
+	//rotate the desired vector
+	desiredAccFloat.x = x * cos(rad) - y * sin(rad);
+	desiredAccFloat.y = y * cos(rad) + x * sin(rad);
+	m_rot = std::atan2f(desiredAccFloat.y, desiredAccFloat.x);
+	finalAcc = XMLoadFloat3(&desiredAccFloat);
 
+	//steering vector = current acceleration - desired acceleration
 	XMVECTOR steeringVec = XMVectorSubtract(finalAcc, XMLoadFloat3(&m_acc));
 	steeringVec = XMVector3ClampLength(steeringVec, 0.0f, m_maxForce);
 	XMStoreFloat3(&m_moveDir, steeringVec);
