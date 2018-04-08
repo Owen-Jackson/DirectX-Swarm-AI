@@ -40,7 +40,7 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	}
 
 	//collision test grid
-	CollisionGrid* collisionGrid = new CollisionGrid(100, 100, 4);
+	CollisionGrid* collisionGrid = new CollisionGrid(100, 100, 5);
 	collisionGrid->SetColor(XMFLOAT4(1.0f, 1.0f, 1.0f, 0.5f));
 	m_models.push_back(collisionGrid);
 
@@ -166,11 +166,6 @@ bool Graphics::Tick(Input* input, float dt)
 	XMFLOAT3 target;
 	target = MouseToWorldCoords(input);
 	
-	//tick all of the objects
-	for (std::list<ModelClass *>::iterator model = m_models.begin(); model != m_models.end(); model++)
-	{
-		(*model)->Tick(dt);
-	}
 
 	//tick all of the swarms
 	for (std::list<Swarm *>::iterator swarm = m_swarms.begin(); swarm != m_swarms.end(); swarm++)
@@ -180,6 +175,12 @@ bool Graphics::Tick(Input* input, float dt)
 			(*swarm)->SetTarget(target);
 		}
 		(*swarm)->Tick(dt);
+	}
+
+	//tick all of the objects
+	for (std::list<ModelClass *>::iterator model = m_models.begin(); model != m_models.end(); model++)
+	{
+		(*model)->Tick(dt);
 	}
 	
 	return true;
