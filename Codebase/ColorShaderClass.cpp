@@ -17,7 +17,7 @@ bool ColorShaderClass::Initialise(ID3D11Device* device, HWND hWnd)
 	bool result;
 
 	//initialise the pixel and vertex shaders
-	result = InitialiseShader(device, hWnd, L"VShader.shader", L"PShader.shader");
+	result = InitialiseShader(device, hWnd, L"../Codebase/VShader.shader", L"../Codebase/PShader.shader");
 	if (!result)
 	{
 		return false;
