@@ -34,15 +34,6 @@ void ColorShaderClass::Shutdown()
 
 bool ColorShaderClass::Render(ID3D11DeviceContext* deviceContext, int vertexCount, int instanceCount)
 {
-
-	//set shader parameters to use for rendering
-	/*
-	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix);
-	if (!result)
-	{
-		return false;
-	}*/
-
 	//render the prepared buffers with the shader
 	RenderShader(deviceContext, vertexCount, instanceCount);
 

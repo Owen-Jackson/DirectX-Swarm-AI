@@ -93,6 +93,7 @@ bool Graphics::Initialise(int screenWidth, int screenHeight, HWND hWnd)
 	sharks->SetSwarmPosition(XMFLOAT3(gridCentre.x, gridCentre.y, 0));
 	sharks->SetSwarmType(SwarmType::PREDATOR);
 	sharks->SetScale(2.0f);
+	sharks->SetSwarmSpeed(10.0f);
 	m_swarms.push_back(sharks);
 
 	//add swarm models to the models list
@@ -164,7 +165,7 @@ bool Graphics::Tick(Input* input, float dt)
 	m_Camera->Tick(input, dt);
 
 	XMFLOAT3 target;
-	target = MouseToWorldCoords(input);
+	target = m_Camera->GetPosition(); //MouseToWorldCoords(input);
 	
 
 	//tick all of the swarms
@@ -182,7 +183,7 @@ bool Graphics::Tick(Input* input, float dt)
 	{
 		(*model)->Tick(dt);
 	}
-	
+
 	return true;
 }
 

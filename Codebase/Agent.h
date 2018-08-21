@@ -24,6 +24,7 @@ public:
 	void SetScale(float);
 	void SetGridCell(GridCell*);
 	void SetGridCellVectorIndex(int);
+	void SetMaxSpeed(float);
 
 	bool IsAlive();
 
@@ -53,7 +54,6 @@ protected:
 	float m_minSqDistFromTarget = 10.0f;
 	Swarm* m_parentSwarm = nullptr;
 	GridCell* m_currentGridCell = nullptr;
-	//DirectX::XMFLOAT3 m_separationVec;
 	int m_cellVectorIndex = -1;	//where the agent is in it's cell vector
 };
 #endif // !_AGENT_

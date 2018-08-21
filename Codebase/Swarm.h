@@ -30,6 +30,7 @@ public:
 	void SetSwarmColor(DirectX::XMFLOAT4);
 	void SetSwarmPosition(DirectX::XMFLOAT3);
 	void SetScale(float);
+	void SetSwarmSpeed(float);
 	void SetSwarmType(const SwarmType);
 
 protected:
@@ -43,6 +44,7 @@ protected:
 	int m_swarmWidth;
 	int m_swarmHeight;
 	float m_agentScale = 1.0f;
+	float m_agentSpeed = 5.0f;
 
 	DirectX::XMFLOAT3 m_pos;
 	DirectX::XMFLOAT3 m_swarmTarget;

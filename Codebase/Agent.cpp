@@ -59,6 +59,11 @@ void Agent::SetGridCellVectorIndex(int index)
 	m_cellVectorIndex = index;
 }
 
+void Agent::SetMaxSpeed(float maxSpeed)
+{
+	m_maxSpeed = maxSpeed;
+}
+
 bool Agent::IsAlive()
 {
 	return m_alive;
@@ -112,10 +117,10 @@ void Agent::Tick(float dt)
 
 	//move the agent in their move direction
 	Steer(target);
-	float velMultiplier = Helpers::Clip(m_sqDistFromTarget / (m_minSqDistFromTarget), 0.0f, 1.0f);
+	//float velMultiplier = Helpers::Clip(m_sqDistFromTarget / (m_minSqDistFromTarget), 0.0f, 1.0f);
 
-	m_vel.x = m_acc.x * dt * m_maxSpeed * velMultiplier;
-	m_vel.y = m_acc.y * dt * m_maxSpeed * velMultiplier;
+	m_vel.x = m_acc.x * dt * m_maxSpeed;// *velMultiplier;
+	m_vel.y = m_acc.y * dt * m_maxSpeed;// *velMultiplier;
 
 	//apply drag
 	m_vel.x *= (1 - dt * m_drag);
@@ -124,61 +129,6 @@ void Agent::Tick(float dt)
 	m_pos.x += m_vel.x;
 	m_pos.y += m_vel.y;
 }
-
-/*
-//used to separate the agents, hopefully avoiding collisions
-void Agent::Separate(std::vector<Agent*>& agentList)
-{
-	float desiredSeparation = 5;
-	int count = 0;
-	XMVECTOR sum = XMVectorZero();
-
-	XMFLOAT3 distance;
-	int i = 0;
-	//for (int i = 0; i < instanceCount; i++)
-	for(std::vector<Agent*>::iterator agent = agentList.begin(); agent != agentList.end(); agent++)
-	{
-		if ((*agent)->m_parentSwarm->GetSwarmType() == m_parentSwarm->GetSwarmType())
-		{
-			if ((*agent) != this)
-			{
-				XMVECTOR distanceVec = XMVector3Length(XMLoadFloat3(&(*agent)->GetPosition()) - XMLoadFloat3(&m_pos));
-				XMStoreFloat3(&distance, distanceVec);
-				if (distance.x < desiredSeparation)
-				{
-					XMVECTOR diff = XMVectorSubtract(XMLoadFloat3(&m_pos), XMLoadFloat3(&(*agent)->GetPosition()));
-					diff = XMVector3Normalize(diff);
-					//diff *= distance.x;
-					//diff /= distance.x;
-					sum = XMVectorAdd(sum, diff);
-					count++;
-				}
-			}
-		}
-	}
-
-	if (count > 0)
-	{
-		sum /= (float)count;
-		sum *= m_maxSpeed;
-		XMFLOAT3 steer;
-		XMStoreFloat3(&steer, XMVectorSubtract(sum, XMLoadFloat3(&m_vel)));
-		m_acc.x += steer.x;
-		m_acc.y += steer.y;
-	}
-}
-
-void Agent::Separate(int& count)
-{
-	XMVECTOR sum = XMLoadFloat3(&m_separationVec);
-	sum /= (float)count;
-	sum *= m_maxSpeed;
-	XMFLOAT3 steer;
-	XMStoreFloat3(&steer, XMVectorSubtract(sum, XMLoadFloat3(&m_vel)));
-	m_acc.x += steer.x;
-	m_acc.y += steer.y;
-}
-*/
 
 void Agent::Steer(XMFLOAT3 target)
 {

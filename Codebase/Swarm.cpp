@@ -40,6 +40,7 @@ void Swarm::InitialiseSwarm(CollisionGrid* grid)
 			Agent* agent = new Agent(this);
 			agent->SetPosition(XMFLOAT3(j * 2.0f * m_agentScale + m_pos.x + (j - m_swarmWidth * m_agentScale), i * 2.0f * m_agentScale + m_pos.y + (i - m_swarmHeight * m_agentScale), 0.0f));
 			agent->SetScale(m_agentScale);
+			agent->SetMaxSpeed(m_agentSpeed);
 			m_agents.push_back(agent);
 
 			//add the new agent to the collision grid
@@ -113,6 +114,11 @@ void Swarm::SetSwarmPosition(XMFLOAT3 position)
 void Swarm::SetScale(float scale)
 {
 	m_agentScale = scale;
+}
+
+void Swarm::SetSwarmSpeed(float agentSpeed)
+{
+	m_agentSpeed = agentSpeed;
 }
 
 void Swarm::SetSwarmType(const SwarmType type)
